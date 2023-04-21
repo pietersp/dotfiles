@@ -19,6 +19,7 @@
   # environment.
   home.packages = with pkgs; [
     bat
+    bottom
     coursier
     direnv
     fd
