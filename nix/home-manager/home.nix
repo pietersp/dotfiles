@@ -31,6 +31,7 @@
     keychain
     neovim
     nix-direnv
+    ranger
     ripgrep
     ripgrep-all
     scala-cli
