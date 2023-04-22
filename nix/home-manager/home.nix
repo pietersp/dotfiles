@@ -29,6 +29,7 @@
     gum
     htop
     keychain
+    lazygit
     neovim
     nix-direnv
     ranger
