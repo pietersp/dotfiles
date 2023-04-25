@@ -35,7 +35,12 @@ lvim.builtin.which_key.mappings["t"] = {
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
 
--- -- Change theme settings
+lvim.builtin.which_key.mappings["o"] = {
+  name = "Org",
+  -- Populated by nvim-orgmode plugin
+}
+
+-- Change theme settings
 lvim.colorscheme = "onedark"
 
 lvim.builtin.alpha.active = true
@@ -166,6 +171,14 @@ lvim.plugins = {
     end
   },
   { "tpope/vim-surround" },
+  {
+    "nvim-orgmode/orgmode",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require('orgmode').setup_ts_grammar()
+      require('orgmode').setup {}
+    end
+  },
 }
 
 require("dap").configurations.scala = {
