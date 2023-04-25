@@ -116,6 +116,11 @@ lvim.plugins = {
     config = function()
       require("user.metals").config()
     end,
+    ft = { "scala", "sc", "sbt" },
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    }
   },
   {
     "folke/trouble.nvim",
