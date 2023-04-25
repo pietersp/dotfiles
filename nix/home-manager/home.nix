@@ -36,6 +36,7 @@
     ripgrep
     ripgrep-all
     scala-cli
+    stow
     tree
     unzip
     zip
