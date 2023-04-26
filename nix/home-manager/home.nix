@@ -22,6 +22,7 @@
     bottom
     coursier
     direnv
+    du-dust
     fd
     fzf
     git
