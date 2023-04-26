@@ -59,6 +59,11 @@ if [ -f "$HOME/.local/.bash_aliases" ] ; then
   source "$HOME/.local/.bash_aliases"
 fi
 
+export EDITOR=lvim
+
 # activate vi mode
 bindkey -v
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd V edit-command-line
 
