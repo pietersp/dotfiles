@@ -39,6 +39,7 @@
     stow
     tree
     unzip
+    xh
     zip
     zsh
   ];
