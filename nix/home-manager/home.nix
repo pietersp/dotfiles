@@ -32,6 +32,7 @@
     lazygit
     neovim
     nix-direnv
+    procs
     ranger
     ripgrep
     ripgrep-all
