@@ -35,10 +35,10 @@ lvim.builtin.which_key.mappings["t"] = {
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
 
-lvim.builtin.which_key.mappings["o"] = {
-  name = "Org",
-  -- Populated by nvim-orgmode plugin
-}
+-- lvim.builtin.which_key.mappings["o"] = {
+--   name = "Org",
+--   -- Populated by nvim-orgmode plugin
+-- }
 
 -- Change theme settings
 lvim.colorscheme = "onedark"
@@ -170,15 +170,31 @@ lvim.plugins = {
       }
     end
   },
-  { "tpope/vim-surround" },
   {
-    "nvim-orgmode/orgmode",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require('orgmode').setup_ts_grammar()
-      require('orgmode').setup {}
-    end
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    opts = {
+      load = {
+        ["core.defaults"] = {},  -- Loads default behaviour
+        ["core.concealer"] = {}, -- Adds pretty icons to your documents
+        ["core.keybinds"] = {
+          config = {
+            default_keybinds = true,
+            neorg_leader = '<Space>n',
+          },
+        },
+        ["core.dirman"] = { -- Manages Neorg workspaces
+          config = {
+            workspaces = {
+              notes = "~/notes",
+            },
+          },
+        },
+      },
+    },
+    dependencies = { { "nvim-lua/plenary.nvim" } },
   },
+  { "tpope/vim-surround" },
 }
 
 require("dap").configurations.scala = {
