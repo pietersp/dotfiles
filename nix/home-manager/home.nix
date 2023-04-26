@@ -38,6 +38,7 @@
     ripgrep
     ripgrep-all
     scala-cli
+    sd
     stow
     tree
     unzip
