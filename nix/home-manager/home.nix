@@ -26,7 +26,6 @@
     git
     graalvm17-ce
     gum
-    htop
     keychain
     lazygit
     neovim
@@ -94,10 +93,10 @@
     enable = true;
     enableZshIntegration = true;
     defaultCommand = "fd --type f --color=never --hidden";
-    # defaulOptions = [
-    #   "--no-height" 
-    #   "--color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b"
-    # ];
+    defaultOptions = [
+      "--no-height" 
+      "--color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b"
+    ];
     changeDirWidgetCommand = "fd --type d . --color=never --hidden";
     changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
   };
@@ -132,6 +131,11 @@
     # Put lvim on the path
     export PATH=$PATH:$HOME/.local/bin
     ";
+    shellAliases = {
+      htop = "btm";
+      cd = "z";
+    };
+
     zplug = {
       enable = true;
       plugins = [
