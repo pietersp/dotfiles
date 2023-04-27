@@ -19,6 +19,7 @@
   # environment.
   home.packages = with pkgs; [
     bottom
+    cht-sh
     coursier
     du-dust
     fd
@@ -99,6 +100,11 @@
     # ];
     changeDirWidgetCommand = "fd --type d . --color=never --hidden";
     changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
+  };
+  # navi (a cli cheat sheet)
+  programs.navi = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # starship prompt
