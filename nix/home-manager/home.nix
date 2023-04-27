@@ -22,7 +22,6 @@
     coursier
     du-dust
     fd
-    fzf
     git
     graalvm17-ce
     gum
@@ -90,12 +89,34 @@
     enableAliases = true;
   };
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    defaultCommand = "fd --type f --color=never --hidden";
+    # defaulOptions = [
+    #   "--no-height" 
+    #   "--color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b"
+    # ];
+    changeDirWidgetCommand = "fd --type d . --color=never --hidden";
+    changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
+  };
+
   # starship prompt
   programs.starship.enable = true;
+
+  # zoxide (smart cd alternative)
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   # zsh and plugins
   programs.zsh = {
     enable = true;
+    dotDir = ".config/zsh";
+    history = {
+      path = "${config.xdg.stateHome}/zsh/zsh_history";
+    };
     zplug = {
       enable = true;
       plugins = [
