@@ -102,7 +102,12 @@
   };
 
   # starship prompt
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+      scala.disabled = true;
+    };
+  };
 
   # zoxide (smart cd alternative)
   programs.zoxide = {
