@@ -18,10 +18,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    bat
     bottom
     coursier
-    direnv
     du-dust
     fd
     fzf
@@ -32,7 +30,6 @@
     keychain
     lazygit
     neovim
-    nix-direnv
     procs
     ranger
     ripgrep
@@ -44,7 +41,6 @@
     unzip
     xh
     zip
-    zsh
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -75,9 +71,38 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+  
+  programs.bat = {
+    enable = true;
+    config.theme = "TwoDark";
+  };
+
+  # direnv and nix-direnv
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
+  # exa (ls replacement)
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+  };
 
   # starship prompt
   programs.starship.enable = true;
+
+  # zsh and plugins
+  programs.zsh = {
+    enable = true;
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "zsh-users/zsh-autosuggestions"; } 
+      ];
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
