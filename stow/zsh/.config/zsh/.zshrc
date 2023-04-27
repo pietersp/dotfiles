@@ -64,6 +64,7 @@ export EDITOR=lvim
 
 # activate vi mode
 bindkey -v
+export KEYTIMEOUT=1
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd V edit-command-line
