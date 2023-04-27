@@ -117,6 +117,10 @@
     history = {
       path = "${config.xdg.stateHome}/zsh/zsh_history";
     };
+    initExtra = "
+    # Put lvim on the path
+    export PATH=$PATH:$HOME/.local/bin
+    ";
     zplug = {
       enable = true;
       plugins = [
