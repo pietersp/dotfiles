@@ -79,6 +79,9 @@
     changeDirWidgetCommand = "fd --type d . --color=never --hidden";
     changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
   };
+
+  programs.lesspipe.enable = true;
+
   # navi (a cli cheat sheet)
   programs.navi = {
     enable = true;
@@ -103,6 +106,11 @@
     initExtra = "
     # Put lvim on the path
     export PATH=$PATH:$HOME/.local/bin
+
+    # use tab to accept suggestion
+    zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
+    # REVIEW THIS: for colors
+    zstyle ':completion:*:descriptions' format '[%d]'
     ";
     shellAliases = {
       htop = "btm";
@@ -111,7 +119,12 @@
     zplug = {
       enable = true;
       plugins = [
-        { name = "marlonrichert/zsh-autocomplete"; }
+        { name = "Aloxaf/fzf-tab"; }
+        { name = "Freed-Wu/fzf-tab-source"; }
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "zdharma-continuum/fast-syntax-highlighting"; }
+
+        # { name = "marlonrichert/zsh-autocomplete"; }
       ];
     };
   };
