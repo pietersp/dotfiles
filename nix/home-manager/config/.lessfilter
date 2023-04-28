@@ -4,12 +4,30 @@ mime=$(file -bL --mime-type "$1")
 category=${mime%%/*}
 kind=${mime##*/}
 if [ -d "$1" ]; then
-	exa --git -hl --color=always --icons "$1"
+	if [ "$(command -v exa)" ]; then
+		exa --git -hl --color=always --icons "$1"
+	fi
+elif [ "$kind" = octet-stream ]; then
+  if [ "$(command -v hx)" ]; then
+    hx -l 512 "$1"
+  fi
+elif [ "$kind" = json ]; then
+	if [ "$(command -v jq)" ]; then
+		jq -Cr . "$1"
+	fi
 elif [ "$category" = image ]; then
-	chafa "$1"
-	exiftool "$1"
+	if [ "$(command -v chafa)" ]; then
+		chafa -f symbols "$1"
+	fi
+	if [ "$(command -v exiftool)" ]; then
+		exiftool "$1" | bat --color=always -plyaml
+	fi
 elif [ "$category" = text ]; then
-	bat --color=always "$1"
+	if [ "$(command -v bat)" ]; then
+		bat --color=always "$1"
+	elif [ "$(command -v pygmentize)" ]; then
+		pygmentize "$1" | less
+	fi
 else
 	lesspipe.sh "$1" | bat --color=always
 fi

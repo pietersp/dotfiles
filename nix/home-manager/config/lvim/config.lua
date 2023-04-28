@@ -7,6 +7,12 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.relativenumber = true
 
+-- When using nix we can not put mutable files in the same
+-- location as the nix-owned config files. Forgo the risk of
+-- not being able to ensure consistency across machines
+lvim.lazy.opts.lockfile = require("lvim.utils").join_paths(get_cache_dir(), "lazy-lock.json")
+
+
 -- general
 lvim.log.level = "info"
 lvim.format_on_save = {

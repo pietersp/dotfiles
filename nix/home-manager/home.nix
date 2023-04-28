@@ -16,6 +16,7 @@
     git
     graalvm17-ce
     gum
+    hex
     keychain
     lazygit
     neovim
@@ -46,6 +47,11 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+  };
+  
+  xdg.configFile.lvim = {
+    source = ./config/lvim;
+    recursive = true;
   };
 
   home.sessionVariables = {
