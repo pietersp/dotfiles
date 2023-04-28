@@ -12,6 +12,7 @@
     coursier
     du-dust
     fd
+    gcc
     git
     graalvm17-ce
     gum
