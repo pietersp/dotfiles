@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     bottom
     cht-sh
+    chafa
     coursier
     du-dust
     fd
@@ -27,6 +28,7 @@
     scala-cli
     sd
     stow
+    tealdeer
     tree
     unzip
     xh
@@ -79,11 +81,6 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-    defaultCommand = "fd --type f --color=never --hidden";
-    defaultOptions = [
-      "--no-height" 
-      "--color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b"
-    ];
     changeDirWidgetCommand = "fd --type d . --color=never --hidden";
     changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
   };
@@ -111,15 +108,20 @@
     history = {
       path = "${config.xdg.stateHome}/zsh/zsh_history";
     };
-    initExtra = "
+    initExtra = ''
     # Put lvim on the path
     export PATH=$PATH:$HOME/.local/bin
 
     # use tab to accept suggestion
     zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
-    # REVIEW THIS: for colors
+    # # REVIEW THIS: for colors
     zstyle ':completion:*:descriptions' format '[%d]'
-    ";
+    # Preview window size
+    zstyle ':fzf-tab:*' fzf-min-height 50
+    # Help for commands
+    zstyle ':fzf-tab:complete:-command-:*' fzf-preview '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out)' 
+    zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
+    '';
     shellAliases = {
       htop = "btm";
     };
@@ -128,11 +130,10 @@
       enable = true;
       plugins = [
         { name = "Aloxaf/fzf-tab"; }
+        # TODO: This breaks command completion help. The file -command-.zsh is causing this
         { name = "Freed-Wu/fzf-tab-source"; }
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "zdharma-continuum/fast-syntax-highlighting"; }
-
-        # { name = "marlonrichert/zsh-autocomplete"; }
       ];
     };
   };

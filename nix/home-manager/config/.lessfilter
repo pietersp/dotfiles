@@ -4,9 +4,14 @@ mime=$(file -bL --mime-type "$1")
 category=${mime%%/*}
 kind=${mime##*/}
 if [ -d "$1" ]; then
-	if [ "$(command -v exa)" ]; then
-		exa --git -hl --color=always --icons "$1"
-	fi
+  tree -c $1 | head -50
+	# if [ "$(command -v exa)" ]; then
+	# 	exa --git -hl --color=always --icons "$1"
+	# fi
+elif [ "$category" = application ]; then
+  if [ "$(command -v hx)" ]; then
+    hx -l 512 "$1"
+  fi
 elif [ "$kind" = octet-stream ]; then
   if [ "$(command -v hx)" ]; then
     hx -l 512 "$1"
@@ -17,7 +22,7 @@ elif [ "$kind" = json ]; then
 	fi
 elif [ "$category" = image ]; then
 	if [ "$(command -v chafa)" ]; then
-		chafa -f symbols "$1"
+		chafa -f symbols -s "$FZF_PREVIEW_LINESx$FZF_PREVIEW_COLUMNS" "$1"
 	fi
 	if [ "$(command -v exiftool)" ]; then
 		exiftool "$1" | bat --color=always -plyaml
@@ -29,6 +34,7 @@ elif [ "$category" = text ]; then
 		pygmentize "$1" | less
 	fi
 else
-	lesspipe.sh "$1" | bat --color=always
+  exit 1
+#	lesspipe.sh "$1" | bat --color=always
 fi
 # lesspipe.sh don't use exa, bat and chafa, it use ls and exiftool. so we create a lessfilter.
