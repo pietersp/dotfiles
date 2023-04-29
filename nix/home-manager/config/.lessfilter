@@ -10,11 +10,11 @@ if [ -d "$1" ]; then
 	# fi
 elif [ "$category" = application ]; then
   if [ "$(command -v hx)" ]; then
-    hx -l 512 "$1"
+    hx -t 1 -l 512 "$1"
   fi
 elif [ "$kind" = octet-stream ]; then
   if [ "$(command -v hx)" ]; then
-    hx -l 512 "$1"
+    hx -t 1 -l 512 "$1"
   fi
 elif [ "$kind" = json ]; then
 	if [ "$(command -v jq)" ]; then
