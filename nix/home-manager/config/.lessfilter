@@ -22,7 +22,7 @@ elif [ "$kind" = json ]; then
 	fi
 elif [ "$category" = image ]; then
 	if [ "$(command -v chafa)" ]; then
-		chafa -f symbols -s "$FZF_PREVIEW_LINESx$FZF_PREVIEW_COLUMNS" "$1"
+		chafa -f symbols -s "${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}" "$1"
 	fi
 	if [ "$(command -v exiftool)" ]; then
 		exiftool "$1" | bat --color=always -plyaml
