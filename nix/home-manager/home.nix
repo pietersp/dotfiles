@@ -15,7 +15,6 @@
     fd
     gcc
     git
-    graalvm17-ce
     gum
     hex
     keychain
@@ -97,6 +96,11 @@
     changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
   };
 
+  programs.java = {
+    enable = true;
+    package = pkgs.graalvm17-ce;
+  };
+
   # Needed for fzf-pipe content rendering
   programs.lesspipe.enable = true;
 
@@ -110,6 +114,11 @@
   programs.navi = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  # job management
+  services.pueue = {
+    enable = true;
   };
 
   # starship prompt
