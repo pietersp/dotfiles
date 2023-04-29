@@ -55,7 +55,7 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "lvim";
   };
   home.shellAliases = {
     htop = "btm";
@@ -165,6 +165,9 @@
     initExtra = ''
     # Put lvim on the path
     export PATH=$PATH:$HOME/.local/bin
+    # allow v to open current line in editor when in cmd mode
+    autoload edit-command-line; zle -N edit-command-line
+    bindkey -M vicmd v edit-command-line
 
     # use tab to accept suggestion
     zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
