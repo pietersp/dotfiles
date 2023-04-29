@@ -119,6 +119,13 @@
   # job management
   services.pueue = {
     enable = true;
+    settings = {
+      shared = {
+        use_unix_socket = true;
+        host = "127.0.0.1";
+        port = "6924";
+      };
+    };
   };
 
   # starship prompt
