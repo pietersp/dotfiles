@@ -178,7 +178,7 @@ lvim.plugins = {
   },
   {
     "nvim-neorg/neorg",
-    enabled = false,
+    enabled = true,
     build = ":Neorg sync-parsers",
     opts = {
       load = {
