@@ -27,7 +27,6 @@
     scala-cli
     sd
     stow
-    tealdeer
     tree
     unzip
     xh
@@ -133,6 +132,15 @@
     enable = true;
     settings = {
       scala.disabled = true;
+    };
+  };
+
+  programs.tealdeer = {
+    enable = true;
+    settings ={
+      display = {
+        compact = true;
+      };
     };
   };
 
