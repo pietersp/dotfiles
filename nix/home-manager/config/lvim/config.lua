@@ -13,6 +13,9 @@ vim.opt.relativenumber = true
 lvim.lazy.opts.lockfile = require("lvim.utils").join_paths(get_cache_dir(), "lazy-lock.json")
 
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- general
 lvim.log.level = "info"
 lvim.format_on_save = {
@@ -250,3 +253,6 @@ require("dap").configurations.scala = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+vim.api.nvim_create_autocmd("BufReadPost", {
+  command = "set foldlevel=99"
+})
