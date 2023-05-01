@@ -202,6 +202,23 @@ lvim.plugins = {
     dependencies = { { "nvim-lua/plenary.nvim" } },
   },
   { "tpope/vim-surround" },
+  {
+    "unisonweb/unison",
+    init = function(plugin)
+      vim.filetype.add({ pattern = { [".*.u"] = "unison" } })
+      vim.opt.rtp:append(plugin.dir .. "/editor-support/vim")
+    end,
+    config = function()
+      local lsp_manager = require("lvim.lsp.manager")
+      lsp_manager.setup("unison", {
+        filetypes = { "unison" },
+        on_init = require("lvim.lsp").common_on_init,
+        capabilities = require("lvim.lsp").common_capabilities(),
+      })
+    end,
+    ft = { "unison" },
+    branch = "trunk",
+  },
 }
 
 require("dap").configurations.scala = {
@@ -222,6 +239,8 @@ require("dap").configurations.scala = {
     },
   },
 }
+
+
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
 -- vim.api.nvim_create_autocmd("FileType", {
