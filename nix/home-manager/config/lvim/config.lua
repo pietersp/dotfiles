@@ -49,6 +49,24 @@ lvim.builtin.which_key.mappings["t"] = {
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
 
+lvim.builtin.treesitter.textobjects = {
+  select = {
+    enable = true,
+    -- Automatically jump forward to textobj, similar to targets.vim
+    lookahead = true,
+    keymaps = {
+      -- You can use the capture groups defined in textobjects.scm
+      ["af"] = { query = "@function.outer", desc = "Func body + def" },
+      ["if"] = { query = "@function.inner", desc = "Func body" },
+      ["ac"] = { query = "@class.outer", desc = "Class body + def" },
+      ["ic"] = { query = "@class.inner", desc = "Class body" },
+      ["aa"] = { query = "@parameter.outer", desc = "Param" },
+      ["ia"] = { query = "@parameter.inner", desc = "Param name" },
+      ["a/"] = { query = "@comment.outer", desc = "Line comment" },
+    },
+  },
+}
+
 -- lvim.builtin.which_key.mappings["o"] = {
 --   name = "Org",
 --   -- Populated by nvim-orgmode plugin
@@ -161,6 +179,9 @@ lvim.plugins = {
   {
     "ggandor/lightspeed.nvim",
     event = "BufRead",
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects"
   },
   {
     "romgrk/nvim-treesitter-context",
