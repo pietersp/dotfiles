@@ -163,6 +163,9 @@
       path = "${config.xdg.stateHome}/zsh/zsh_history";
     };
     initExtra = ''
+
+    source $HOME/.nix-profile/etc/profile.d/nix.sh
+
     # Put lvim on the path
     export PATH=$PATH:$HOME/.local/bin
     # allow v to open current line in editor when in cmd mode
