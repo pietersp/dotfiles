@@ -4,7 +4,7 @@ mime=$(file -bL --mime-type "$1")
 category=${mime%%/*}
 kind=${mime##*/}
 if [ -d "$1" ]; then
-  tree -c $1 | head -50
+  exa --tree $1 --level=2 
 	# if [ "$(command -v exa)" ]; then
 	# 	exa --git -hl --color=always --icons "$1"
 	# fi
