@@ -100,16 +100,18 @@
     enable = true;
     enableZshIntegration = false;
     colors = {
-      hl    = "#c678dd";
-      "fg+" = "#ffffff";
-      "bg+" = "#4b5263";
-      "hl+" = "#d858fe";
-      info  = "#98c379";
-      prompt = "#61afef";
-      pointer = "#be5046";
-      marker  = "#e5c07b";
-      spinner = "#61afef";
-      header = "#61afef"; 
+      bg    = "#1e1e2e";
+      fg    = "#cdd6f4";
+      hl    = "#f38ba8";
+      "fg+" = "#cdd6f4";
+      "bg+" = "#313244";
+      "hl+" = "#f38ba8";
+      info  = "#cba6f7";
+      prompt = "#cba6f7";
+      pointer = "#f5e0dc";
+      marker  = "#f5e0dc";
+      spinner = "#f5e0dc";
+      header = "#f38ba8"; 
     };
     changeDirWidgetCommand = "fd --type d . --color=never --hidden";
     changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
@@ -202,6 +204,7 @@
         { name = "Freed-Wu/fzf-tab-source"; }
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "zdharma-continuum/fast-syntax-highlighting"; }
+        { name = "plugins/colored-man-pages"; tags = ["from:oh-my-zsh"]; }
       ];
     };
   };
