@@ -184,6 +184,15 @@
     # Help for commands
     zstyle ':fzf-tab:complete:-command-:*' fzf-preview '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out)' 
     zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
+
+    # Colored man pages
+    export LESS_TERMCAP_mb=$'\e[1;32m'
+    export LESS_TERMCAP_md=$'\e[1;32m'
+    export LESS_TERMCAP_me=$'\e[0m'
+    export LESS_TERMCAP_se=$'\e[0m'
+    export LESS_TERMCAP_so=$'\e[01;33m'
+    export LESS_TERMCAP_ue=$'\e[0m'
+    export LESS_TERMCAP_us=$'\e[1;4;31m'
     '';
     shellAliases = {
     };
