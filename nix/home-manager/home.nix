@@ -33,6 +33,9 @@
     zip
   ];
 
+  # This should source the nix.sh automatically
+  targets.genericLinux.enable = true;
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -164,7 +167,7 @@
     };
     initExtra = ''
 
-    source $HOME/.nix-profile/etc/profile.d/nix.sh
+    # source $HOME/.nix-profile/etc/profile.d/nix.sh
 
     # Put lvim on the path
     export PATH=$PATH:$HOME/.local/bin
