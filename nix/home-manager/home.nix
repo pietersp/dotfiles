@@ -71,16 +71,7 @@
   
   programs.bat = {
     enable = true;
-    config.theme = "catppuccin";
-    themes = {
-      catppuccin = builtins.readFile (pkgs.fetchFromGitHub {
-        # catppuccin/bat
-        owner = "catppuccin";
-        repo = "bat"; 
-        rev = "477622171ec0529505b0ca3cada68fc9433648c6";
-        sha256 = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw";
-      } + "/Catppuccin-mocha.tmTheme");
-    };
+    config.theme = "TwoDark";
   };
 
   # direnv and nix-direnv
@@ -100,18 +91,16 @@
     enable = true;
     enableZshIntegration = false;
     colors = {
-      bg    = "#1e1e2e";
-      fg    = "#cdd6f4";
-      hl    = "#f38ba8";
-      "fg+" = "#cdd6f4";
-      "bg+" = "#313244";
-      "hl+" = "#f38ba8";
-      info  = "#cba6f7";
-      prompt = "#cba6f7";
-      pointer = "#f5e0dc";
-      marker  = "#f5e0dc";
-      spinner = "#f5e0dc";
-      header = "#f38ba8"; 
+      hl    = "#c678dd";
+      "fg+" = "#ffffff";
+      "bg+" = "#4b5263";
+      "hl+" = "#d858fe";
+      info  = "#98c379";
+      prompt = "#61afef";
+      pointer = "#be5046";
+      marker  = "#e5c07b";
+      spinner = "#61afef";
+      header = "#61afef"; 
     };
     changeDirWidgetCommand = "fd --type d . --color=never --hidden";
     changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
@@ -204,7 +193,6 @@
         { name = "Freed-Wu/fzf-tab-source"; }
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "zdharma-continuum/fast-syntax-highlighting"; }
-        { name = "plugins/colored-man-pages"; tags = ["from:oh-my-zsh"]; }
       ];
     };
   };

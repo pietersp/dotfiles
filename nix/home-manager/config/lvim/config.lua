@@ -73,7 +73,7 @@ lvim.builtin.treesitter.textobjects = {
 -- }
 
 -- Change theme settings
-lvim.colorscheme = "catppuccin"
+lvim.colorscheme = "onedark"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -167,14 +167,6 @@ lvim.plugins = {
     "navarasu/onedark.nvim",
     opts = {
       style = 'darker'
-    }
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    opts = {
-      flavour = "mocha",
-      transparent_background = true,
     }
   },
   {
