@@ -205,7 +205,7 @@
       plugins = [
         { name = "Aloxaf/fzf-tab"; }
         # TODO: This breaks command completion help. The file -command-.zsh is causing this
-        { name = "Freed-Wu/fzf-tab-source"; }
+        # { name = "Freed-Wu/fzf-tab-source"; }
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "zdharma-continuum/fast-syntax-highlighting"; }
       ];
