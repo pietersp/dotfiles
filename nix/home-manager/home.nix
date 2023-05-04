@@ -14,7 +14,6 @@
     du-dust
     fd
     gcc
-    git
     grc
     gum
     hex
@@ -85,6 +84,7 @@
     nix-direnv.enable = true;
   };
 
+
   # exa (ls replacement)
   programs.exa = {
     enable = true;
@@ -108,6 +108,15 @@
     };
     changeDirWidgetCommand = "fd --type d . --color=never --hidden";
     changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
+  };
+
+  programs.git = {
+    enable = true;
+    delta = {
+      enable = true;
+    };
+    userEmail = "pietersp@gmail.com";
+    userName = "Pieter Prinsloo";
   };
 
   programs.java = {
