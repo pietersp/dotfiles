@@ -15,6 +15,7 @@
     fd
     gcc
     git
+    grc
     gum
     hex
     keychain
