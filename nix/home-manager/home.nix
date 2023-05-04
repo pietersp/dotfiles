@@ -194,6 +194,7 @@
     # Help for commands
     zstyle ':fzf-tab:complete:-command-:*' fzf-preview '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out)' 
     zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
+    zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ''${(Q)realpath}'
 
     # Colored man pages
     export LESS_TERMCAP_mb=$'\e[1;32m'
