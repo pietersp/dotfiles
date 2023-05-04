@@ -62,7 +62,7 @@
   };
   home.shellAliases = {
     htop = "btm";
-    cat = "bat";
+    cat = "bat --color=always";
     hm = "home-manager";
     hmd = "cd ~/dotfiles/nix/home-manager";
     hmgd = "home-manager generations | head -n 2 | tac | cut -d \" \" -f 7 | xargs nix store diff-closures";
