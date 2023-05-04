@@ -36,6 +36,8 @@
   # This should source the nix.sh automatically
   targets.genericLinux.enable = true;
 
+  home.sessionPath = ["$HOME/.local/bin"];
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -177,10 +179,6 @@
     };
     initExtra = ''
 
-    # source $HOME/.nix-profile/etc/profile.d/nix.sh
-
-    # Put lvim on the path
-    export PATH=$PATH:$HOME/.local/bin
     # allow v to open current line in editor when in cmd mode
     autoload edit-command-line; zle -N edit-command-line
     bindkey -M vicmd v edit-command-line
