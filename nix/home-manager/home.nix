@@ -19,6 +19,7 @@
     hex
     keychain
     lazygit
+    mediainfo
     neovim
     procs
     ranger
