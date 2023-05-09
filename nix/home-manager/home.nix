@@ -14,6 +14,7 @@
     du-dust
     fd
     gcc
+    gitui
     grc
     gum
     hex
