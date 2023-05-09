@@ -131,7 +131,7 @@
 
   programs.jq = {
     enable = true;
-  }
+  };
 
   # TODO: add keychain
 
