@@ -65,6 +65,7 @@
     EDITOR = "lvim";
   };
   home.shellAliases = {
+    cd = "z";
     htop = "btm";
     cat = "bat --color=always";
     hm = "home-manager";
@@ -218,6 +219,7 @@
         # { name = "Freed-Wu/fzf-tab-source"; }
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "zdharma-continuum/fast-syntax-highlighting"; }
+        { name = "agkozak/zsh-z"; }
       ];
     };
   };
