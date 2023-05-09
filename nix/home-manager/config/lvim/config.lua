@@ -49,6 +49,10 @@ lvim.builtin.which_key.mappings["t"] = {
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
 
+lvim.builtin.which_key.mappings["lL"] = {
+  "<cmd>lua require'lsp_lines'.toggle()<CR>", "Toggle Multiline"
+}
+
 lvim.builtin.treesitter.textobjects = {
   select = {
     enable = true,
@@ -255,6 +259,15 @@ lvim.plugins = {
     end,
     ft = { "unison" },
     branch = "trunk",
+  },
+  {
+    url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    enabled = true,
+    config = function()
+      require("lsp_lines").setup()
+      -- Disable on start. Can be toggled on
+      vim.diagnostic.config({ virtual_lines = false })
+    end
   },
 }
 
