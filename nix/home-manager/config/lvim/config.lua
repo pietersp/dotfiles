@@ -29,6 +29,7 @@ lvim.format_on_save = {
 
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
+
 -- add your own keymapping
 -- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
@@ -270,6 +271,28 @@ lvim.plugins = {
       vim.diagnostic.config({ virtual_lines = false })
     end
   },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = {
+      suggestion = {
+        keymap = {
+          accept = "<c-l>",
+          next = "<c-j>",
+          prev = "<c-k>",
+          dismiss = "<c-h>",
+        },
+      },
+    },
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua", "nvim-cmp" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
 }
 
 require("dap").configurations.scala = {
@@ -291,6 +314,8 @@ require("dap").configurations.scala = {
   },
 }
 
+local opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
 
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
