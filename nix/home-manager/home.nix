@@ -67,7 +67,7 @@
   home.shellAliases = {
     cd = "z";
     htop = "btm";
-    cat = "bat --color=always";
+    # cat = "bat --color=always";
     hm = "home-manager";
     hmd = "cd ~/dotfiles/nix/home-manager";
     hmgd = "home-manager generations | head -n 2 | tac | cut -d \" \" -f 7 | xargs nix store diff-closures";
@@ -153,6 +153,10 @@
   # TODO: consider nushell
   # TODO: consider pet
   # TODO: add pistol. A previewer for ranger
+
+  programs.pistol = {
+    enable = true;
+  };
 
   # job management
   services.pueue = {
