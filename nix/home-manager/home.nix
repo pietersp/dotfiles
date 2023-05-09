@@ -133,6 +133,8 @@
     enable = true;
   }
 
+  # TODO: add keychain
+
   # Needed for fzf-pipe content rendering
   programs.lesspipe.enable = true;
 
