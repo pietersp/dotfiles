@@ -129,6 +129,10 @@
     package = pkgs.graalvm17-ce;
   };
 
+  programs.jq = {
+    enable = true;
+  }
+
   # Needed for fzf-pipe content rendering
   programs.lesspipe.enable = true;
 
@@ -171,6 +175,11 @@
         compact = true;
       };
     };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # zsh and plugins
@@ -219,7 +228,6 @@
         # { name = "Freed-Wu/fzf-tab-source"; }
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "zdharma-continuum/fast-syntax-highlighting"; }
-        { name = "agkozak/zsh-z"; }
       ];
     };
   };
