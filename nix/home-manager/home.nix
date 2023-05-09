@@ -150,6 +150,10 @@
     enableZshIntegration = true;
   };
 
+  # TODO: consider nushell
+  # TODO: consider pet
+  # TODO: add pistol. A previewer for ranger
+
   # job management
   services.pueue = {
     enable = true;
