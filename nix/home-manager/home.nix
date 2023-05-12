@@ -15,6 +15,7 @@
     fd
     gcc
     gitui
+    gnumake
     grc
     gum
     hex
