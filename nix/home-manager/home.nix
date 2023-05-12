@@ -134,7 +134,12 @@
     enable = true;
   };
 
-  # TODO: add keychain
+  programs.keychain = {
+    enable = true;
+    enableZshIntegration = true;
+    keys = ["~/.ssh/github"];
+
+  };
 
   # Needed for fzf-pipe content rendering
   programs.lesspipe.enable = true;
