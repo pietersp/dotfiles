@@ -158,8 +158,6 @@
 
   # TODO: consider nushell
   # TODO: consider pet
-  # TODO: add pistol. A previewer for ranger
-
   programs.pistol = {
     enable = true;
   };
