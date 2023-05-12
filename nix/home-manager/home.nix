@@ -156,11 +156,12 @@
     enableZshIntegration = true;
   };
 
-  # TODO: consider nushell
   programs.nushell = {
     enable = true;
   };
+
   # TODO: consider pet
+
   programs.pistol = {
     enable = true;
   };
