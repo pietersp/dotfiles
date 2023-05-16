@@ -23,6 +23,7 @@
     lazygit
     mediainfo
     neovim
+    nodejs
     procs
     ranger
     ripgrep
