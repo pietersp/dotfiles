@@ -237,6 +237,13 @@ lvim.plugins = {
     dependencies = { { "nvim-lua/plenary.nvim" } },
   },
   {
+    "epwalsh/obsidian.nvim",
+    config = function(_, opts)
+      require("obsidian").setup(opts)
+    end,
+
+  },
+  {
     "kylechui/nvim-surround",
     event = "VeryLazy",
     config = function()
@@ -300,6 +307,10 @@ lvim.plugins = {
       flavour = "mocha",
       transparent_background = true,
     }
+  },
+  {
+    "folke/zen-mode.nvim",
+    opts = {}
   },
 }
 
