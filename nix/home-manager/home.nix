@@ -71,12 +71,11 @@
     htop = "btm";
     # cat = "bat --color=always";
     hm = "home-manager";
-    hmd = "cd ~/dotfiles/nix/home-manager";
     hmgd = "home-manager generations | head -n 2 | tac | cut -d \" \" -f 7 | xargs nix store diff-closures";
     hmp = "home-manager packages";
     hms = "home-manager switch --flake ~/dotfiles/nix/home-manager#pieter && hmgd";
     hmu = "nix flake update ~/dotfiles/nix/home-manager && hms";
-    hmhe = "nvim ~/dotfiles/nix/home-manager/home.nix";
+    hmhe = "lvim ~/dotfiles/nix/home-manager/home.nix";
   };
   
   programs.bat = {
