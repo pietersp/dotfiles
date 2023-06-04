@@ -208,10 +208,42 @@
   # zsh and plugins
   programs.zsh = {
     enable = true;
+
     dotDir = ".config/zsh";
     history = {
       path = "${config.xdg.stateHome}/zsh/zsh_history";
     };
+
+    plugins = [
+      {
+        name = "fzf-tab";
+        src = pkgs.fetchFromGitHub {
+          owner = "Aloxaf";
+          repo = "fzf-tab";
+          rev = "5a81e13792a1eed4a03d2083771ee6e5b616b9ab";
+          sha256 = "sha256-dPe5CLCAuuuLGRdRCt/nNruxMrP9f/oddRxERkgm1FE=";
+        };
+      }
+      {
+        name = "zsh-autosuggestions";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-autosuggestions";
+          rev = "v0.7.0";
+          sha256 = "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
+        };
+      }
+      {
+        name = "fast-syntax-highlighting";
+        src = pkgs.fetchFromGitHub {
+          owner = "zdharma-continuum";
+          repo = "fast-syntax-highlighting";
+          rev = "v1.55";
+          sha256 = "sha256-DWVFBoICroKaKgByLmDEo4O+xo6eA8YO792g8t8R7kA=";
+        };
+      }
+    ];
+
     initExtra = ''
 
     # allow v to open current line in editor when in cmd mode
@@ -240,17 +272,7 @@
     # Make less work nicely with bat
     export LESS=-R
     '';
-    shellAliases = {
-    };
 
-    zplug = {
-      enable = true;
-      plugins = [
-        { name = "Aloxaf/fzf-tab"; }
-        { name = "zsh-users/zsh-autosuggestions"; }
-        { name = "zdharma-continuum/fast-syntax-highlighting"; }
-      ];
-    };
   };
 
   # Let Home Manager install and manage itself.
