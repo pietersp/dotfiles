@@ -4,7 +4,7 @@
   home.username = "pieter";
   home.homeDirectory = "/home/pieter";
 
-  home.stateVersion = "22.11"; # Please read the comment before changing.
+  home.stateVersion = "23.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
     bottom
