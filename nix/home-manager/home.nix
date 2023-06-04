@@ -63,6 +63,11 @@
     recursive = true;
   };
 
+  xdg.configFile.wezterm = {
+    source = ./config/wezterm;
+    recursive = true;
+  };
+
   home.sessionVariables = {
     EDITOR = "lvim";
   };
