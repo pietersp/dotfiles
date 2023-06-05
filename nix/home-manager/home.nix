@@ -251,6 +251,7 @@
     '';
 
     sessionVariables = {
+      LANG = "en_US.UTF-8";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
       LESS = "-r";
     };
