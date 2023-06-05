@@ -215,32 +215,20 @@
     };
 
     plugins = [
-      {
-        name = "fzf-tab";
-        src = pkgs.fetchFromGitHub {
-          owner = "Aloxaf";
-          repo = "fzf-tab";
-          rev = "5a81e13792a1eed4a03d2083771ee6e5b616b9ab";
-          sha256 = "sha256-dPe5CLCAuuuLGRdRCt/nNruxMrP9f/oddRxERkgm1FE=";
-        };
+      { 
+        name = "fzf-tab"; 
+        src = pkgs.zsh-fzf-tab;
+        file = "share/fzf-tab/fzf-tab.plugin.zsh";
       }
       {
-        name = "zsh-autosuggestions";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-autosuggestions";
-          rev = "v0.7.0";
-          sha256 = "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
-        };
+        name = "zsh-autosuggestions"; 
+        src = pkgs.zsh-autosuggestions;
+        file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
       }
       {
-        name = "fast-syntax-highlighting";
-        src = pkgs.fetchFromGitHub {
-          owner = "zdharma-continuum";
-          repo = "fast-syntax-highlighting";
-          rev = "v1.55";
-          sha256 = "sha256-DWVFBoICroKaKgByLmDEo4O+xo6eA8YO792g8t8R7kA=";
-        };
+        name = "zsh-fast-syntax-highlighting";
+        src = pkgs.zsh-fast-syntax-highlighting;
+        file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
       }
     ];
 
@@ -260,18 +248,12 @@
     zstyle ':fzf-tab:complete:-command-:*' fzf-preview '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out)' 
     zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
     zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ''${(Q)realpath}'
-
-    # Colored man pages
-    export LESS_TERMCAP_mb=$'\e[1;32m'
-    export LESS_TERMCAP_md=$'\e[1;32m'
-    export LESS_TERMCAP_me=$'\e[0m'
-    export LESS_TERMCAP_se=$'\e[0m'
-    export LESS_TERMCAP_so=$'\e[01;33m'
-    export LESS_TERMCAP_ue=$'\e[0m'
-    export LESS_TERMCAP_us=$'\e[1;4;31m'
-    # Make less work nicely with bat
-    export LESS=-R
     '';
+
+    sessionVariables = {
+      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+      LESS = "-r";
+    };
 
   };
 
