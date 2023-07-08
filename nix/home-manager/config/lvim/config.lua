@@ -253,23 +253,6 @@ lvim.plugins = {
     end
   },
   {
-    "unisonweb/unison",
-    init = function(plugin)
-      vim.filetype.add({ pattern = { [".*.u"] = "unison" } })
-      vim.opt.rtp:append(plugin.dir .. "/editor-support/vim")
-    end,
-    config = function()
-      local lsp_manager = require("lvim.lsp.manager")
-      lsp_manager.setup("unison", {
-        filetypes = { "unison" },
-        on_init = require("lvim.lsp").common_on_init,
-        capabilities = require("lvim.lsp").common_capabilities(),
-      })
-    end,
-    ft = { "unison" },
-    branch = "trunk",
-  },
-  {
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     enabled = true,
     config = function()
