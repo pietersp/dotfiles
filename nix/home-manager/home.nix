@@ -8,8 +8,8 @@
 
   home.packages = with pkgs; [
     bottom
-    cht-sh
     chafa
+    cht-sh
     coursier
     du-dust
     fd
@@ -19,6 +19,7 @@
     grc
     gum
     hex
+    jsonnet
     keychain
     lazygit
     mediainfo
