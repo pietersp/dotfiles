@@ -28,9 +28,10 @@
     procs
     ranger
     ripgrep
-    ripgrep-all
+#    ripgrep-all
     scala-cli
     sd
+    sqlite
     stow
     tree
     unzip

@@ -295,6 +295,18 @@ lvim.plugins = {
     "folke/zen-mode.nvim",
     opts = {}
   },
+  -- Database explorer / Datagrip replacement
+  {
+    "tpope/vim-dadbod"
+  },
+  {
+    "kristijanhusak/vim-dadbod-ui"
+  },
+  {
+    "kristijanhusak/vim-dadbod-completion"
+  }
+
+  
 }
 
 require("dap").configurations.scala = {
