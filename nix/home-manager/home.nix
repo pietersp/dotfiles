@@ -37,6 +37,7 @@
     unzip
     xh
     zip
+    zellij
   ];
 
   # This should source the nix.sh automatically
@@ -67,6 +68,11 @@
 
   xdg.configFile.wezterm = {
     source = ./config/wezterm;
+    recursive = true;
+  };
+
+  xdg.configFile.zellij = {
+    source = ./config/zellij;
     recursive = true;
   };
 
