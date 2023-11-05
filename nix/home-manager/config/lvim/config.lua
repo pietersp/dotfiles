@@ -304,9 +304,10 @@ lvim.plugins = {
   },
   {
     "kristijanhusak/vim-dadbod-completion"
+  },
+  {
+    "David-Kunz/gen.nvim"
   }
-
-  
 }
 
 require("dap").configurations.scala = {
