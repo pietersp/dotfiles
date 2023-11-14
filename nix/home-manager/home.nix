@@ -80,9 +80,7 @@
     EDITOR = "lvim";
   };
   home.shellAliases = {
-    cd = "z";
     htop = "btm";
-    # cat = "bat --color=always";
     hm = "home-manager";
     hmgd = "home-manager generations | head -n 2 | tac | cut -d \" \" -f 7 | xargs nix store diff-closures";
     hmp = "home-manager packages";
@@ -93,7 +91,22 @@
   
   programs.bat = {
     enable = true;
-    config.theme = "TwoDark";
+    themes = {
+      catppuccin = {
+      src = pkgs.fetchFromGitHub {
+        owner = "catppuccin";
+        repo = "bat"; # Bat uses sublime syntax for its themes
+        rev = "477622171ec0529505b0ca3cada68fc9433648c6";
+        sha256 = "6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
+      };
+      file = "Catppuccin-mocha.tmTheme";
+      };
+    };
+    config.theme = "catppuccin";
+  };
+
+  programs.carapace = {
+    enable = false;
   };
 
   # direnv and nix-direnv
@@ -107,7 +120,7 @@
   # exa (ls replacement)
   programs.eza = {
     enable = true;
-    enableAliases = true;
+    enableAliases = false;
   };
 
   programs.fzf = {
@@ -163,17 +176,9 @@
     keyScheme = "vim";
   };
 
-  # navi (a cli cheat sheet)
-  programs.navi = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   programs.nushell = {
     enable = true;
   };
-
-  # TODO: consider pet
 
   programs.pistol = {
     enable = true;
@@ -194,6 +199,8 @@
   # starship prompt
   programs.starship = {
     enable = true;
+    enableZshIntegration = true;
+    enableNushellIntegration = true;
     settings = {
       scala.disabled = true;
     };
@@ -248,19 +255,17 @@
 
     # use tab to accept suggestion
     zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
-    # # REVIEW THIS: for colors
+    # needed for $group variable 
     zstyle ':completion:*:descriptions' format '[%d]'
     # Preview window size
     zstyle ':fzf-tab:*' fzf-min-height 50
     # Help for commands
     zstyle ':fzf-tab:complete:-command-:*' fzf-preview '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out)' 
-    zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
     zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ''${(Q)realpath}'
     '';
 
     sessionVariables = {
       LANG = "en_US.UTF-8";
-      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
       LESS = "-r";
     };
 
