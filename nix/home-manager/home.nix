@@ -1,5 +1,16 @@
 { config, pkgs, ... }:
 
+let
+  lunarvim = pkgs.lunarvim.overrideAttrs (
+  old: {
+    src = pkgs.fetchFromGitHub {
+      owner = "LunarVim";
+      repo = "LunarVim";
+      rev = "f74046d1911e430ca734d1ed1509d2ff3bdfe7e1";
+      sha256 = "z1Cw3wGpFDmlrAIy7rrjlMtzcW7a6HWSjI+asEDcGPA=";
+    };
+  });
+in
 {
   home.username = "pieter";
   home.homeDirectory = "/home/pieter";
@@ -22,6 +33,7 @@
     jsonnet
     keychain
     lazygit
+    lunarvim
     mediainfo
     neovim
     nodejs
@@ -203,6 +215,7 @@
     enableNushellIntegration = true;
     settings = {
       scala.disabled = true;
+      container.disabled = true;
     };
   };
 
@@ -267,6 +280,13 @@
     sessionVariables = {
       LANG = "en_US.UTF-8";
       LESS = "-r";
+    };
+
+    shellAliases = {
+      ls = "eza";
+      ll = "eza -la";
+      llt = "eza -la --sort newest";
+      cd = "z";
     };
 
   };
