@@ -22,6 +22,7 @@ in
     chafa
     cht-sh
     coursier
+    csvkit
     du-dust
     fd
     gcc
@@ -38,7 +39,6 @@ in
     neovim
     nodejs
     procs
-#    ranger
     ripgrep
 #    ripgrep-all
     scala-cli
@@ -71,6 +71,9 @@ in
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".jq".text = ''
+    def tocsv: (.[0] | keys_unsorted) as $keys | $keys, map([.[ $keys[] ]])[] | @csv;
+    '';
   };
   
   xdg.configFile.lvim = {
