@@ -38,7 +38,7 @@ in
     neovim
     nodejs
     procs
-    ranger
+#    ranger
     ripgrep
 #    ripgrep-all
     scala-cli
@@ -226,6 +226,13 @@ in
         compact = true;
       };
     };
+  };
+
+  # file manager
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+    enableNushellIntegration = true;
   };
 
   programs.zoxide = {
