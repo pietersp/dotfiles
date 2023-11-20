@@ -195,8 +195,15 @@ in
     enable = true;
   };
 
-  programs.pistol = {
+  programs.pet = {
     enable = true;
+    snippets =  [
+      {
+        command = "git rev-list --count HEAD";
+        description = "Count the number of commits in the current branch";
+        output = "473";
+      }
+    ];
   };
 
   # job management
