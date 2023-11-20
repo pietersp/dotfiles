@@ -13,7 +13,6 @@ vim.opt.relativenumber = true
 lvim.lazy.opts.lockfile = require("lvim.utils").join_paths(get_cache_dir(), "lazy-lock.json")
 lvim.builtin.dap.ui.auto_open = false
 
-
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
@@ -170,12 +169,6 @@ lvim.plugins = {
     cmd = "TroubleToggle",
   },
   {
-    "navarasu/onedark.nvim",
-    opts = {
-      style = 'darker'
-    }
-  },
-  {
     "nvim-telescope/telescope-ui-select.nvim"
   },
   {
@@ -262,25 +255,14 @@ lvim.plugins = {
     end
   },
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = {
-      suggestion = {
-        keymap = {
-          accept = "<c-l>",
-          next = "<c-j>",
-          prev = "<c-k>",
-          dismiss = "<c-h>",
-        },
-      },
-    },
-  },
-  {
     "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua", "nvim-cmp" },
+    event = "InsertEnter",
+    dependencies = { "zbirenbaum/copilot.lua" },
     config = function()
-      require("copilot_cmp").setup()
+      vim.defer_fn(function()
+        require("copilot").setup()
+        require("copilot_cmp").setup()
+      end, 100)
     end,
   },
   {
@@ -290,10 +272,6 @@ lvim.plugins = {
       flavour = "mocha",
       transparent_background = true,
     }
-  },
-  {
-    "folke/zen-mode.nvim",
-    opts = {}
   },
   -- Database explorer / Datagrip replacement
   {
