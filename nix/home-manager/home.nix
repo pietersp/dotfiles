@@ -77,11 +77,8 @@ in
   };
   
   xdg.configFile.delta = {
-    target = "delta/themes.gitconfig";
-    text = builtins.readFile(builtins.fetchurl { 
-      url = "https://github.com/dandavison/delta/blob/b7fd05eba4fe3084dd2376d474584d707e93f4e3/themes.gitconfig";
-      sha256 = "15cwf50v5xbhr2qf2wr41dg1wbvs6kmwm73hz2j3wjx48lwa4f0r";
-    });
+    source = ./config/delta;
+    recursive = true;
   };
 
   xdg.configFile.gitui = {
@@ -179,7 +176,7 @@ in
     userName = "Pieter Prinsloo";
     extraConfig = {
       include.path = "~/.config/delta/themes.gitconfig";
-      delta.features = "mellow-barbet";
+      delta.features = "catppuccin";
     };
   };
 
