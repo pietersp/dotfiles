@@ -1,6 +1,6 @@
 [delta "catppuccin"]
     dark = true
-    syntax-theme = catppuccin
+    syntax-theme = Catppuccin-mocha
     line-numbers = true
     side-by-side = false
     file-style = brightwhite
