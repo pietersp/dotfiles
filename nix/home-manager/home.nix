@@ -76,6 +76,11 @@ in
     '';
   };
   
+  xdg.configFile.gitui = {
+    source = ./config/gitui;
+    recursive = true;
+  };
+
   xdg.configFile.lvim = {
     source = ./config/lvim;
     recursive = true;
