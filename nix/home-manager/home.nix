@@ -294,6 +294,16 @@ in
         src = pkgs.zsh-fast-syntax-highlighting;
         file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
       }
+      {
+        name = " jq-zsh-plugin ";
+        src = pkgs.fetchFromGitHub {
+          owner = "reegnz";
+          repo = "jq-zsh-plugin";
+          rev = "a5b404a8de5c0ef426f9bb4acbb31778862e2b18";
+          sha256 = "gyVK1u5FgzN9zqkR/H3mGe8qlIY1By2S9PsmSgtH87U=";
+        };
+        file = "jq.plugin.zsh";
+      }
     ];
 
     initExtra = ''
