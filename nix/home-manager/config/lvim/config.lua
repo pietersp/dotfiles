@@ -53,6 +53,10 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.builtin.which_key.mappings["lL"] = {
   "<cmd>lua require'lsp_lines'.toggle()<CR>", "Toggle Multiline"
 }
+-- Neoclip
+lvim.builtin.which_key.mappings["\""] = {
+  "<cmd>Telescope neoclip plus<CR>", "Neoclip"
+}
 
 lvim.builtin.treesitter.textobjects = {
   select = {
@@ -92,6 +96,7 @@ lvim.builtin.treesitter.auto_install = true
 lvim.builtin.dap.active = true
 lvim.builtin.telescope.on_config_done = function(telescope)
   pcall(telescope.load_extension, 'ui-select')
+  pcall(telescope.load_extension, "neoclip")
 end
 
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -296,7 +301,37 @@ lvim.plugins = {
     "ellisonleao/glow.nvim",
     config = true,
     cmd = "Glow"
-  }
+  },
+  {
+    "tversteeg/registers.nvim",
+    name = "registers",
+    keys = {
+      { "\"",    mode = { "n", "v" } },
+      { "<C-R>", mode = "i" }
+    },
+    cmd = "Registers",
+    config = function()
+      require('registers').setup({})
+    end,
+  },
+  {
+    "AckslD/nvim-neoclip.lua",
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      {
+        'kkharji/sqlite.lua',
+        module = 'sqlite'
+      },
+    },
+    config = function()
+      require('neoclip').setup({
+        history = 1000,
+        enable_persistent_history = true,
+        length_limit = 1048576,
+        continuous_sync = true,
+      })
+    end,
+  },
 }
 
 require("dap").configurations.scala = {
