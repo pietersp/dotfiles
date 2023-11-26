@@ -285,6 +285,17 @@ lvim.plugins = {
   },
   {
     "David-Kunz/gen.nvim"
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
+  {
+    "ellisonleao/glow.nvim",
+    config = true,
+    cmd = "Glow"
   }
 }
 

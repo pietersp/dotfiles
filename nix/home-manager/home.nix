@@ -29,6 +29,7 @@ in
     gitui
     gnumake
     grc
+    glow
     gum
     hex
     jsonnet
