@@ -336,7 +336,7 @@ in
       *) git show --color=always $word | delta ;;
       esac'
     zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
-      case "$group" in
+      'case "$group" in
       "[modified file]") git diff $word | delta ;;
       "[recent commit object name]") git show --color=always $word | delta ;;
       *) git log --color=always $word ;;
