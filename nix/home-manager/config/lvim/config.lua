@@ -191,17 +191,17 @@ lvim.plugins = {
       require("leap").add_default_mappings()
     end,
   },
-  -- f t on steroids
-  {
-    "ggandor/flit.nvim",
-    dependencies = {
-      "ggandor/leap.nvim",
-      "tpope/vim-repeat"
-    },
-    config = function()
-      require("flit").setup({})
-    end,
-  },
+  -- f t on steroids, consider this in the future
+  -- {
+  --   "ggandor/flit.nvim",
+  --   dependencies = {
+  --     "ggandor/leap.nvim",
+  --     "tpope/vim-repeat"
+  --   },
+  --   config = function()
+  --     require("flit").setup({})
+  --   end,
+  -- },
   {
     "nvim-treesitter/nvim-treesitter-textobjects"
   },
