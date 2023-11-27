@@ -180,9 +180,27 @@ lvim.plugins = {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
+  -- lightspeed replacement
   {
-    "ggandor/lightspeed.nvim",
-    event = "BufRead",
+    "ggandor/leap.nvim",
+    name = "leap",
+    dependencies = {
+      "tpope/vim-repeat"
+    },
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
+  -- f t on steroids
+  {
+    "ggandor/flit.nvim",
+    dependencies = {
+      "ggandor/leap.nvim",
+      "tpope/vim-repeat"
+    },
+    config = function()
+      require("flit").setup({})
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects"
@@ -246,7 +264,19 @@ lvim.plugins = {
     event = "VeryLazy",
     config = function()
       require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
+        keymaps = {
+          insert = "<C-g>s",
+          insert_line = "<C-g>S",
+          normal = "ys",
+          normal_cur = "yss",
+          normal_line = "yS",
+          normal_cur_line = "ySS",
+          visual = "gs",
+          visual_line = "gS",
+          delete = "ds",
+          change = "cs",
+          change_line = "cS",
+        }
       })
     end
   },
