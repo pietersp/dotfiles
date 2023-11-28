@@ -37,6 +37,7 @@ in
     lazygit
     lunarvim
     mediainfo
+    mods
     neovim
     nodejs
     procs
@@ -44,6 +45,7 @@ in
 #    ripgrep-all
     scala-cli
     sd
+    skate
     sqlite
     stow
     tree
