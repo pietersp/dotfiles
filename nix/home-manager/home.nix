@@ -27,6 +27,7 @@ in
     fd
     gcc
     gitui
+    git-crypt
     gnumake
     grc
     glow
@@ -186,6 +187,13 @@ in
       include.path = "~/.config/delta/themes.gitconfig";
       delta.features = "catppuccin";
     };
+  };
+
+  programs.gpg = {
+    enable = true;
+    homedir = "${config.xdg.dataHome}/gnupg";
+    mutableKeys = true;
+    mutableTrust = true;
   };
 
   programs.java = {
