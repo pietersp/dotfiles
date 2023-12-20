@@ -46,6 +46,7 @@ in
 #    ripgrep-all
     scala-cli
     sd
+    skaffold
     skate
     sqlite
     stow
@@ -53,7 +54,6 @@ in
     unzip
     xh
     zip
-    zellij
   ];
 
   # This should source the nix.sh automatically
@@ -102,11 +102,6 @@ in
 
   xdg.configFile.yazi = {
     source = ./config/yazi;
-    recursive = true;
-  };
-
-  xdg.configFile.zellij = {
-    source = ./config/zellij;
     recursive = true;
   };
 
@@ -278,6 +273,14 @@ in
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "catppuccin-mocha";
+    };
   };
 
   # zsh and plugins
