@@ -9,10 +9,7 @@ let
     };
   });
 in {
-
-  home.packages = with pkgs; [
-    lunarvim
-  ];
+  home.packages = [ pkgs.lunarvim ];
 
   xdg.configFile.lvim = {
     source = ./config;
