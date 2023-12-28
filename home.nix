@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  username = "pieter";
   lunarvim = pkgs.lunarvim.overrideAttrs (old: {
     src = pkgs.fetchFromGitHub {
       owner = "LunarVim";
@@ -10,8 +11,8 @@ let
     };
   });
 in {
-  home.username = "pieter";
-  home.homeDirectory = "/home/pieter";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
 
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
@@ -109,7 +110,7 @@ in {
       home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nix store diff-closures'';
     hmp = "home-manager packages";
     hms =
-      "home-manager switch --flake ~/dotfiles/nix/home-manager#pieter && hmgd";
+      "home-manager switch --flake ~/dotfiles/nix/home-manager#${username} && hmgd";
     hmu = "nix flake update ~/dotfiles/nix/home-manager && hms";
     hmhe = "lvim ~/dotfiles/nix/home-manager/home.nix";
   };
