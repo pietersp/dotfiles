@@ -148,7 +148,7 @@ in {
 
   programs.fzf = {
     enable = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
     colors = {
       hl = "#c678dd";
       "fg+" = "#ffffff";
@@ -201,7 +201,7 @@ in {
   programs.lesspipe.enable = true;
 
   programs.mcfly = {
-    enable = true;
+    enable = false;
     enableZshIntegration = true;
     keyScheme = "vim";
   };
