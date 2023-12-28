@@ -21,7 +21,6 @@ in
     bottom
     chafa
     cht-sh
-    coursier
     csvkit
     du-dust
     fd
@@ -44,7 +43,6 @@ in
     procs
     ripgrep
 #    ripgrep-all
-    scala-cli
     sd
     skaffold
     skate

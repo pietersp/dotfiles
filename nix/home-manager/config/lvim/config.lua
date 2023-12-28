@@ -57,6 +57,10 @@ lvim.builtin.which_key.mappings["lL"] = {
 lvim.builtin.which_key.mappings["\""] = {
   "<cmd>Telescope neoclip plus<CR>", "Neoclip"
 }
+-- Outline
+lvim.builtin.which_key.mappings["o"] = {
+  "<cmd>Outline<CR>", "Outline"
+}
 
 lvim.builtin.treesitter.textobjects = {
   select = {
@@ -356,20 +360,22 @@ lvim.plugins = {
     "AckslD/nvim-neoclip.lua",
     dependencies = {
       'nvim-telescope/telescope.nvim',
-      {
-        'kkharji/sqlite.lua',
-        module = 'sqlite'
-      },
     },
     config = function()
       require('neoclip').setup({
         history = 1000,
-        enable_persistent_history = true,
+        enable_persistent_history = false,
         length_limit = 1048576,
-        continuous_sync = true,
       })
     end,
   },
+  -- treesitter outline (symbols)
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = {"Outline", "OutlineOpen" },
+    opts = {},
+  }
 }
 
 require("dap").configurations.scala = {
