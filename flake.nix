@@ -17,7 +17,7 @@
       nixosConfigurations = {
         nixos-tutorial = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./configuration.nix ];
+          modules = [ ./system/nixos-tutorial/configuration.nix ];
         };
       };
       
