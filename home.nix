@@ -296,6 +296,11 @@ in {
         };
         file = "jq.plugin.zsh";
       }
+      {
+        name = "zsh-nix-shell";
+        src = pkgs.zsh-nix-shell;
+        file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+      }
     ];
 
     initExtra = ''
