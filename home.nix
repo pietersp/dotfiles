@@ -110,9 +110,9 @@ in {
       home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nix store diff-closures'';
     hmp = "home-manager packages";
     hms =
-      "home-manager switch --flake ~/dotfiles/nix/home-manager#${username} && hmgd";
-    hmu = "nix flake update ~/dotfiles/nix/home-manager && hms";
-    hmhe = "lvim ~/dotfiles/nix/home-manager/home.nix";
+      "home-manager switch --flake ~/dotfiles#${username} && hmgd";
+    hmu = "nix flake update ~/dotfiles && hms";
+    hmhe = "lvim ~/dotfiles/home.nix";
   };
 
   programs.bat = {
