@@ -15,6 +15,10 @@
     extraGroups = [ "wheel" ];
   };
 
+  environment.systemPackages = [
+    (import ./win32yank.nix {inherit pkgs;})
+  ];
+
   system.stateVersion = "23.05";
 
   wsl = {

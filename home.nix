@@ -15,6 +15,7 @@ in {
 
   home.packages = with pkgs; [
     bottom
+    cachix
     chafa
     cht-sh
     csvkit

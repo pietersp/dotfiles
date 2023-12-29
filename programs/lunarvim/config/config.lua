@@ -373,7 +373,7 @@ lvim.plugins = {
   {
     "hedyhli/outline.nvim",
     lazy = true,
-    cmd = {"Outline", "OutlineOpen" },
+    cmd = { "Outline", "OutlineOpen" },
     opts = {},
   }
 }
