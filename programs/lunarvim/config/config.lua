@@ -239,31 +239,31 @@ lvim.plugins = {
       }
     end
   },
-  {
-    "nvim-neorg/neorg",
-    enabled = true,
-    build = ":Neorg sync-parsers",
-    opts = {
-      load = {
-        ["core.defaults"] = {},  -- Loads default behaviour
-        ["core.concealer"] = {}, -- Adds pretty icons to your documents
-        ["core.keybinds"] = {
-          config = {
-            default_keybinds = true,
-            neorg_leader = '<Space>n',
-          },
-        },
-        ["core.dirman"] = { -- Manages Neorg workspaces
-          config = {
-            workspaces = {
-              notes = "~/notes",
-            },
-          },
-        },
-      },
-    },
-    dependencies = { { "nvim-lua/plenary.nvim" } },
-  },
+  -- {
+  --   "nvim-neorg/neorg",
+  --   enabled = true,
+  --   build = ":Neorg sync-parsers",
+  --   opts = {
+  --     load = {
+  --       ["core.defaults"] = {},  -- Loads default behaviour
+  --       ["core.concealer"] = {}, -- Adds pretty icons to your documents
+  --       ["core.keybinds"] = {
+  --         config = {
+  --           default_keybinds = true,
+  --           neorg_leader = '<Space>n',
+  --         },
+  --       },
+  --       ["core.dirman"] = { -- Manages Neorg workspaces
+  --         config = {
+  --           workspaces = {
+  --             notes = "~/notes",
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  --   dependencies = { { "nvim-lua/plenary.nvim" } },
+  -- },
   {
     "epwalsh/obsidian.nvim",
     config = function(_, opts)
