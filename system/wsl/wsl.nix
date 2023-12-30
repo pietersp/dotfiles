@@ -17,6 +17,7 @@
 
   environment.systemPackages = [
     (import ./win32yank.nix {inherit pkgs;})
+    pkgs.git
   ];
 
   system.stateVersion = "23.05";
