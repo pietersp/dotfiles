@@ -14,8 +14,8 @@
   git clone https://github.com/pietersp/dotfiles.git /tmp/dotfiles
   ```
 5. `cd /tmp/dotfiles`
-6. `sudo nix-rebuild switch --flake .`
+6. `sudo nixos-rebuild switch --flake .`
 7. User should now be created.
 8. Log in as new user and install standalone home-manager
 9. `mv /tmp/dotfiles ~/dotfiles`
-10. home-manager switch --flake .
+10. `home-manager switch --flake .`
