@@ -375,7 +375,17 @@ lvim.plugins = {
     lazy = true,
     cmd = { "Outline", "OutlineOpen" },
     opts = {},
-  }
+  },
+  {
+    "simrat39/rust-tools.nvim",
+    lazy = true,
+    config = function()
+      require("user.rust_tools").config()
+    end,
+    ft = { "rust", "rs" },
+    -- enable = lvim.builtin.rust_programming.active
+  },
+
 }
 
 require("dap").configurations.scala = {
