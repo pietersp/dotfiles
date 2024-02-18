@@ -19,7 +19,7 @@ in {
     cachix
     chafa
     cht-sh
-    csvkit
+    # csvkit
     du-dust
     fd
     gcc
