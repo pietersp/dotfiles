@@ -2,6 +2,8 @@
   inputs,
   config,
   pkgs,
+  devenv,
+  alejandra,
   ...
 }: let
   username = "pieter";
@@ -17,8 +19,8 @@ in {
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    inputs.devenv.packages."${pkgs.system}".devenv
-    inputs.alejandra.defaultPackage."${pkgs.system}"
+    devenv.packages."${pkgs.system}".devenv
+    alejandra.defaultPackage."${pkgs.system}"
     bottom
     cachix
     chafa

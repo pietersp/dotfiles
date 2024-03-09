@@ -61,7 +61,11 @@
       pieter = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [./home.nix];
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit devenv;
+          inherit alejandra;
+        };
       };
     };
   };
