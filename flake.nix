@@ -20,37 +20,43 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixos-wsl, devenv, ... }:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
-      };
-    in {
-      nixosConfigurations = {
-        nixos-tutorial = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [ ./system/nixos-tutorial/configuration.nix ];
-        };
-        nixos = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {inherit inputs;};
-          modules = [
-            nixos-wsl.nixosModules.wsl
-            ./system/wsl/wsl.nix
-          ];
-        };
-      };
-
-      homeConfigurations = {
-        pieter = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home.nix ];
-          extraSpecialArgs = {inherit inputs;};
-        };
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    nixos-wsl,
+    devenv,
+    ...
+  }: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
       };
     };
+  in {
+    nixosConfigurations = {
+      nixos-tutorial = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [./system/nixos-tutorial/configuration.nix];
+      };
+      nixos = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs;};
+        modules = [
+          nixos-wsl.nixosModules.wsl
+          ./system/wsl/wsl.nix
+        ];
+      };
+    };
+
+    homeConfigurations = {
+      pieter = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [./home.nix];
+        extraSpecialArgs = {inherit inputs;};
+      };
+    };
+  };
 }

@@ -1,11 +1,14 @@
-{ inputs, config, pkgs, ... }:
-
-let
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}: let
   username = "pieter";
 in {
   imports = [
-   ./programs/zsh/zsh.nix
-   ./programs/lunarvim/lunarvim.nix
+    ./programs/zsh/zsh.nix
+    ./programs/lunarvim/lunarvim.nix
   ];
 
   home.username = "${username}";
@@ -54,7 +57,7 @@ in {
   # This should source the nix.sh automatically
   targets.genericLinux.enable = true;
 
-  home.sessionPath = [ "$HOME/.local/bin" ];
+  home.sessionPath = ["$HOME/.local/bin"];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -101,8 +104,7 @@ in {
     hmgd = ''
       home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nix store diff-closures'';
     hmp = "home-manager packages";
-    hms =
-      "home-manager switch --flake ~/dotfiles#${username} && hmgd";
+    hms = "home-manager switch --flake ~/dotfiles#${username} && hmgd";
     hmu = "nix flake update ~/dotfiles && hms";
     hmhe = "lvim ~/dotfiles/home.nix";
   };
@@ -123,7 +125,7 @@ in {
     config.theme = "Catppuccin-mocha";
   };
 
-  programs.carapace = { enable = false; };
+  programs.carapace = {enable = false;};
 
   # direnv and nix-direnv
   programs.direnv = {
@@ -154,12 +156,12 @@ in {
       header = "#61afef";
     };
     changeDirWidgetCommand = "fd --type d . --color=never --hidden";
-    changeDirWidgetOptions = [ "--preview 'tree -C {} | head -50'" ];
+    changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
   };
 
   programs.git = {
     enable = true;
-    delta = { enable = true; };
+    delta = {enable = true;};
     userEmail = "pietersp@gmail.com";
     userName = "Pieter Prinsloo";
     extraConfig = {
@@ -180,13 +182,12 @@ in {
     package = pkgs.graalvm-ce;
   };
 
-  programs.jq = { enable = true; };
+  programs.jq = {enable = true;};
 
   programs.keychain = {
     enable = true;
     enableZshIntegration = true;
-    keys = [ "~/.ssh/github" ];
-
+    keys = ["~/.ssh/github"];
   };
 
   # Needed for fzf-pipe content rendering
@@ -198,15 +199,17 @@ in {
     keyScheme = "vim";
   };
 
-  programs.nushell = { enable = true; };
+  programs.nushell = {enable = true;};
 
   programs.pet = {
     enable = true;
-    snippets = [{
-      command = "git rev-list --count HEAD";
-      description = "Count the number of commits in the current branch";
-      output = "473";
-    }];
+    snippets = [
+      {
+        command = "git rev-list --count HEAD";
+        description = "Count the number of commits in the current branch";
+        output = "473";
+      }
+    ];
   };
 
   # job management
@@ -234,7 +237,7 @@ in {
 
   programs.tealdeer = {
     enable = true;
-    settings = { display = { compact = true; }; };
+    settings = {display = {compact = true;};};
   };
 
   # file manager
@@ -252,7 +255,7 @@ in {
   programs.zellij = {
     enable = true;
     enableZshIntegration = true;
-    settings = { theme = "catppuccin-mocha"; };
+    settings = {theme = "catppuccin-mocha";};
   };
 
   # Let Home Manager install and manage itself.

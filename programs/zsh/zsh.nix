@@ -1,10 +1,13 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
 
     dotDir = ".config/zsh";
-    history = { path = "${config.xdg.stateHome}/zsh/zsh_history"; };
+    history = {path = "${config.xdg.stateHome}/zsh/zsh_history";};
 
     plugins = [
       {
@@ -47,12 +50,12 @@
 
       # use tab to accept suggestion
       zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
-      # needed for $group variable 
+      # needed for $group variable
       zstyle ':completion:*:descriptions' format '[%d]'
       # Preview window size
       zstyle ':fzf-tab:*' fzf-min-height 50
       # Help for commands
-      zstyle ':fzf-tab:complete:-command-:*' fzf-preview '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out)' 
+      zstyle ':fzf-tab:complete:-command-:*' fzf-preview '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out)'
       zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ''${(Q)realpath}'
       # git commands
       zstyle ':completion:*:git-(checkout|log|show):*' sort false
@@ -86,6 +89,5 @@
       llt = "eza -la --sort newest";
       cd = "z";
     };
-
   };
 }

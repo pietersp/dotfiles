@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   lunarvim = pkgs.lunarvim.overrideAttrs (old: {
     src = pkgs.fetchFromGitHub {
       owner = "LunarVim";
@@ -10,7 +9,7 @@ let
     patches = [];
   });
 in {
-  home.packages = [ 
+  home.packages = [
     lunarvim
   ];
 
@@ -19,5 +18,5 @@ in {
     recursive = true;
   };
 
-  home.sessionVariables = { EDITOR = "lvim"; };
+  home.sessionVariables = {EDITOR = "lvim";};
 }
