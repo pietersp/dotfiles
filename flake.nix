@@ -18,6 +18,11 @@
       url = "github:cachix/devenv/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    alejandra = {
+      url = "github:kamadorueda/alejandra/3.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -26,6 +31,7 @@
     home-manager,
     nixos-wsl,
     devenv,
+    alejandra,
     ...
   }: let
     system = "x86_64-linux";

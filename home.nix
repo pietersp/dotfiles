@@ -18,6 +18,7 @@ in {
 
   home.packages = with pkgs; [
     inputs.devenv.packages."${pkgs.system}".devenv
+    inputs.alejandra.defaultPackage."${pkgs.system}"
     bottom
     cachix
     chafa
