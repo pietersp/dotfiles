@@ -140,7 +140,7 @@ in {
   # exa (ls replacement)
   programs.eza = {
     enable = true;
-    enableAliases = false;
+    enableZshIntegration = true;
   };
 
   programs.fzf = {
