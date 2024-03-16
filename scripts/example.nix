@@ -1,3 +1,5 @@
+# When in this directory you can run the script with
+# nix-shell example.nix --command example-script
 with import <nixpkgs> {};
 
 let 
