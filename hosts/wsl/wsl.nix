@@ -1,21 +1,22 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }: {
   networking.hostName = "nixos";
   time.timeZone = "Africa/Johannesburg";
 
   programs.zsh.enable = true;
-  environment.shells = [ pkgs.zsh ];
+  environment.shells = [pkgs.zsh];
 
   users.users.pieter = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" ];
+    extraGroups = ["wheel"];
   };
 
   environment.systemPackages = [
-    (import ./win32yank.nix { inherit pkgs; })
+    (import ./win32yank.nix {inherit pkgs;})
     pkgs.git
   ];
 
@@ -32,7 +33,7 @@
 
   nix = {
     settings = {
-      trusted-users = [ "pieter" ];
+      trusted-users = ["pieter"];
       accept-flake-config = true;
       auto-optimise-store = true;
       substituters = [

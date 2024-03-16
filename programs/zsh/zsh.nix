@@ -1,12 +1,13 @@
-{ config
-, pkgs
-, ...
+{
+  config,
+  pkgs,
+  ...
 }: {
   programs.zsh = {
     enable = true;
 
     dotDir = ".config/zsh";
-    history = { path = "${config.xdg.stateHome}/zsh/zsh_history"; };
+    history = {path = "${config.xdg.stateHome}/zsh/zsh_history";};
 
     plugins = [
       {

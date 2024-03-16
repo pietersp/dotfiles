@@ -1,9 +1,10 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config
-, pkgs
-, ...
+{
+  config,
+  pkgs,
+  ...
 }: {
   imports = [
     # Include the results of the hardware scan.
@@ -70,7 +71,7 @@
   users.users.pieter = {
     isNormalUser = true;
     description = "pieter";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       firefox
       wezterm
@@ -91,7 +92,7 @@
   ];
   fonts.packages = with pkgs; [
     monaspace
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override {fonts = ["FiraCode"];})
     noto-fonts-color-emoji
   ];
 
@@ -126,7 +127,7 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
     substituters = [
       "https://hyprland.cachix.org"
       "https://cache.nixos.org"
