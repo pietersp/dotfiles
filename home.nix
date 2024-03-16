@@ -1,13 +1,13 @@
-{
-  inputs,
-  config,
-  pkgs,
-  devenv,
-  alejandra,
-  ...
-}: let
+{ inputs
+, config
+, pkgs
+, devenv
+, ...
+}:
+let
   username = "pieter";
-in {
+in
+{
   imports = [
     ./programs/zsh/zsh.nix
     ./programs/lunarvim/lunarvim.nix
@@ -20,7 +20,6 @@ in {
 
   home.packages = with pkgs; [
     devenv.packages."${pkgs.system}".devenv
-    alejandra.defaultPackage."${pkgs.system}"
     bottom
     cachix
     chafa
@@ -60,7 +59,7 @@ in {
   # This should source the nix.sh automatically
   targets.genericLinux.enable = true;
 
-  home.sessionPath = ["$HOME/.local/bin"];
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -128,7 +127,7 @@ in {
     config.theme = "Catppuccin-mocha";
   };
 
-  programs.carapace = {enable = false;};
+  programs.carapace = { enable = false; };
 
   # direnv and nix-direnv
   programs.direnv = {
@@ -159,12 +158,12 @@ in {
       header = "#61afef";
     };
     changeDirWidgetCommand = "fd --type d . --color=never --hidden";
-    changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
+    changeDirWidgetOptions = [ "--preview 'tree -C {} | head -50'" ];
   };
 
   programs.git = {
     enable = true;
-    delta = {enable = true;};
+    delta = { enable = true; };
     userEmail = "pietersp@gmail.com";
     userName = "Pieter Prinsloo";
     extraConfig = {
@@ -185,12 +184,12 @@ in {
     package = pkgs.graalvm-ce;
   };
 
-  programs.jq = {enable = true;};
+  programs.jq = { enable = true; };
 
   programs.keychain = {
     enable = true;
     enableZshIntegration = true;
-    keys = ["~/.ssh/github"];
+    keys = [ "~/.ssh/github" ];
   };
 
   # Needed for fzf-pipe content rendering
@@ -202,7 +201,7 @@ in {
     keyScheme = "vim";
   };
 
-  programs.nushell = {enable = true;};
+  programs.nushell = { enable = true; };
 
   programs.pet = {
     enable = true;
@@ -240,7 +239,7 @@ in {
 
   programs.tealdeer = {
     enable = true;
-    settings = {display = {compact = true;};};
+    settings = { display = { compact = true; }; };
   };
 
   # file manager
@@ -258,7 +257,7 @@ in {
   programs.zellij = {
     enable = true;
     enableZshIntegration = true;
-    settings = {theme = "catppuccin-mocha";};
+    settings = { theme = "catppuccin-mocha"; };
   };
 
   # Let Home Manager install and manage itself.

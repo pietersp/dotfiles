@@ -19,54 +19,67 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    alejandra = {
-      url = "github:kamadorueda/alejandra/3.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    home-manager,
-    nixos-wsl,
-    devenv,
-    alejandra,
-    ...
-  }: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-    };
-  in {
-    nixosConfigurations = {
-      nixos-tutorial = nixpkgs.lib.nixosSystem {
+  outputs =
+    inputs @ { self
+    , nixpkgs
+    , home-manager
+    , nixos-wsl
+    , devenv
+    , ...
+    }:
+    let
+      inherit (self) outputs;
+      lib = nixpkgs.lib // home-manager.lib;
+      systems = [
+        # "aarch64-linux"  # Raspberry Pi systems
+        "x86_64-linux" # General linux systems
+        # "aarch64-darwin" # MacOS systems
+      ];
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+      pkgsFor = lib.genAttrs systems (system: import nixpkgs {
         inherit system;
-        modules = [./hosts/nixos-tutorial/configuration.nix];
-      };
-      nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs;};
-        modules = [
-          nixos-wsl.nixosModules.wsl
-          ./hosts/wsl/wsl.nix
-        ];
-      };
-    };
+        config.allowUnfree = true;
+      });
+    in
+    {
+      inherit lib;
 
-    homeConfigurations = {
-      pieter = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [./home.nix];
-        extraSpecialArgs = {
-          inherit inputs;
-          inherit devenv;
-          inherit alejandra;
+      # Custom modifications/overrides to upstream packages
+      overlays = import ./overlays { inherit inputs outputs; };
+
+      # Your custom packages meant to be shared or upstreamed.
+      # Accessible through 'nix build', 'nix shell', etc
+      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
+
+      # Nix formatter available through `nix fmt` https://nix-community.github.io/nixpkgs-fmt
+      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+
+      nixosConfigurations = {
+        nixos-tutorial = lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/nixos-tutorial/configuration.nix ];
+        };
+        nixos = lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            nixos-wsl.nixosModules.wsl
+            ./hosts/wsl/wsl.nix
+          ];
+        };
+      };
+
+      homeConfigurations = {
+        pieter = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.x86_64-linux;
+          modules = [ ./home.nix ];
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit devenv;
+          };
         };
       };
     };
-  };
 }
