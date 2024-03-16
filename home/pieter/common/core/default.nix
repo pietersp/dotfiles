@@ -8,10 +8,11 @@
 in {
   imports = [
     ./git
+    ./lesspipe
     ./lunarvim
+    ./starship
     ./yazi
     ./zsh
-    ./lesspipe
   ];
 
   home.username = "${username}";
@@ -187,16 +188,6 @@ in {
     };
   };
 
-  # starship prompt
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    enableNushellIntegration = true;
-    settings = {
-      scala.disabled = true;
-      container.disabled = true;
-    };
-  };
 
   programs.tealdeer = {
     enable = true;
