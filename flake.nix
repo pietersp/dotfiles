@@ -57,7 +57,9 @@
       nixos-tutorial = lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/nixos-tutorial/configuration.nix];
+        modules = [
+          ./hosts/nixos-tutorial/configuration.nix
+        ];
       };
       nixos = lib.nixosSystem {
         pkgs = pkgsFor.x86_64-linux;
@@ -67,12 +69,24 @@
           ./hosts/wsl/wsl.nix
         ];
       };
+      helene = lib.nixosSystem {
+        pkgs = pkgsFor.x86_64-linux;
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/helene/configuration.nix  
+        ];
+      };
     };
 
     homeConfigurations = {
       "pieter@nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         modules = [./home/pieter/nixos.nix];
+        extraSpecialArgs = { inherit inputs outputs; };
+      };
+      "pieter@helene" = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsFor.x86_64-linux;
+        modules = [./home/pieter/helene.nix];
         extraSpecialArgs = { inherit inputs outputs; };
       };
     };
