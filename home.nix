@@ -2,7 +2,6 @@
   inputs,
   config,
   pkgs,
-  devenv,
   ...
 }: let
   username = "pieter";
@@ -18,7 +17,7 @@ in {
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    devenv.packages."${pkgs.system}".devenv
+    inputs.devenv
     bottom
     cachix
     chafa
@@ -105,7 +104,7 @@ in {
     hmgd = ''
       home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nix store diff-closures'';
     hmp = "home-manager packages";
-    hms = "home-manager switch --flake ~/dotfiles#${username} && hmgd";
+    hms = "home-manager switch --flake ~/dotfiles#${username}@$(hostname) && hmgd";
     hmu = "nix flake update ~/dotfiles && hms";
     hmhe = "lvim ~/dotfiles/home.nix";
   };

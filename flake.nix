@@ -25,7 +25,6 @@
     nixpkgs,
     home-manager,
     nixos-wsl,
-    devenv,
     ...
   }: let
     inherit (self) outputs;
@@ -33,7 +32,7 @@
     systems = [
       # "aarch64-linux"  # Raspberry Pi systems
       "x86_64-linux" # General linux systems
-      # "aarch64-darwin" # MacOS systems
+      "aarch64-darwin" # MacOS systems
     ];
     forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
     pkgsFor = lib.genAttrs systems (system:
@@ -71,13 +70,10 @@
     };
 
     homeConfigurations = {
-      pieter = home-manager.lib.homeManagerConfiguration {
+      "pieter@nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         modules = [./home.nix];
-        extraSpecialArgs = {
-          inherit inputs;
-          inherit devenv;
-        };
+        extraSpecialArgs = { inherit inputs outputs; };
       };
     };
   };
