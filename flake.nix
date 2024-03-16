@@ -45,14 +45,14 @@
     nixosConfigurations = {
       nixos-tutorial = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [./system/nixos-tutorial/configuration.nix];
+        modules = [./hosts/nixos-tutorial/configuration.nix];
       };
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {inherit inputs;};
         modules = [
           nixos-wsl.nixosModules.wsl
-          ./system/wsl/wsl.nix
+          ./hosts/wsl/wsl.nix
         ];
       };
     };
