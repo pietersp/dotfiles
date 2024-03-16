@@ -4,7 +4,8 @@
     # Required configs
     common/core #required
 
-    # Host-specific optional configs
+    # Host specific optional configs
+    # common/optional/wezterm
 
   ];
 }

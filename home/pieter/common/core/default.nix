@@ -9,6 +9,7 @@ in {
   imports = [
     ./git
     ./lunarvim
+    ./yazi
     ./zsh
   ];
 
@@ -76,15 +77,7 @@ in {
     '';
   };
 
-  xdg.configFile.wezterm = {
-    source = ./config/wezterm;
-    recursive = true;
-  };
 
-  xdg.configFile.yazi = {
-    source = ./config/yazi;
-    recursive = true;
-  };
 
   home.shellAliases = {
     htop = "btm";
@@ -215,13 +208,6 @@ in {
   programs.tealdeer = {
     enable = true;
     settings = {display = {compact = true;};};
-  };
-
-  # file manager
-  programs.yazi = {
-    enable = true;
-    enableZshIntegration = true;
-    enableNushellIntegration = true;
   };
 
   programs.zoxide = {
