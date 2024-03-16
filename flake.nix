@@ -63,6 +63,7 @@
           modules = [ ./hosts/nixos-tutorial/configuration.nix ];
         };
         nixos = lib.nixosSystem {
+          pkgs = pkgsFor.x86_64-linux;
           specialArgs = { inherit inputs outputs; };
           modules = [
             nixos-wsl.nixosModules.wsl
