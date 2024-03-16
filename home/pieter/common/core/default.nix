@@ -7,8 +7,9 @@
   username = "pieter";
 in {
   imports = [
-    ./zsh
+    ./git
     ./lunarvim
+    ./zsh
   ];
 
   home.username = "${username}";
@@ -26,8 +27,6 @@ in {
     du-dust
     fd
     gcc
-    gitui
-    git-crypt
     gnumake
     grc
     glow
@@ -35,7 +34,6 @@ in {
     hex
     jsonnet
     keychain
-    lazygit
     mediainfo
     mods
     neovim
@@ -76,16 +74,6 @@ in {
     ".jq".text = ''
       def tocsv: (.[0] | keys_unsorted) as $keys | $keys, map([.[ $keys[] ]])[] | @csv;
     '';
-  };
-
-  xdg.configFile.delta = {
-    source = ./config/delta;
-    recursive = true;
-  };
-
-  xdg.configFile.gitui = {
-    source = ./config/gitui;
-    recursive = true;
   };
 
   xdg.configFile.wezterm = {
@@ -157,17 +145,6 @@ in {
     };
     changeDirWidgetCommand = "fd --type d . --color=never --hidden";
     changeDirWidgetOptions = ["--preview 'tree -C {} | head -50'"];
-  };
-
-  programs.git = {
-    enable = true;
-    delta = {enable = true;};
-    userEmail = "pietersp@gmail.com";
-    userName = "Pieter Prinsloo";
-    extraConfig = {
-      include.path = "~/.config/delta/themes.gitconfig";
-      delta.features = "catppuccin";
-    };
   };
 
   programs.gpg = {
