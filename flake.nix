@@ -72,7 +72,7 @@
     homeConfigurations = {
       "pieter@nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
-        modules = [./home.nix];
+        modules = [./home/pieter/nixos.nix];
         extraSpecialArgs = { inherit inputs outputs; };
       };
     };

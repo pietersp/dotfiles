@@ -7,8 +7,8 @@
   username = "pieter";
 in {
   imports = [
-    ./programs/zsh/zsh.nix
-    ./programs/lunarvim/lunarvim.nix
+    ./zsh
+    ./lunarvim
   ];
 
   home.username = "${username}";
