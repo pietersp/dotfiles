@@ -31,6 +31,7 @@ in {
     # csvkit
     du-dust
     fd
+    file
     gcc
     gnumake
     grc
