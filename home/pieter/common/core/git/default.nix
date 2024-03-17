@@ -10,7 +10,7 @@
   };
 
   home.packages = with pkgs; [
-    git-crypt
+    git-crypt #TODO: Replace this with sops
     gitui
     lazygit
   ];
