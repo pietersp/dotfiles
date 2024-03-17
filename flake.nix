@@ -73,7 +73,7 @@
         pkgs = pkgsFor.x86_64-linux;
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./hosts/helene/configuration.nix  
+          ./hosts/helene/configuration.nix
         ];
       };
     };
@@ -82,12 +82,12 @@
       "pieter@nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         modules = [./home/pieter/nixos.nix];
-        extraSpecialArgs = { inherit inputs outputs; };
+        extraSpecialArgs = {inherit inputs outputs;};
       };
       "pieter@helene" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         modules = [./home/pieter/helene.nix];
-        extraSpecialArgs = { inherit inputs outputs; };
+        extraSpecialArgs = {inherit inputs outputs;};
       };
     };
   };

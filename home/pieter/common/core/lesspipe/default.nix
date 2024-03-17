@@ -1,5 +1,4 @@
-{pkgs, ...}:{
-
+{pkgs, ...}: {
   # Needed for fzf-pipe content rendering
   programs.lesspipe.enable = true;
 

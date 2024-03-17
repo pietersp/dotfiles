@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-
   xdg.configFile.delta = {
     source = ./config/delta;
     recursive = true;
@@ -10,12 +9,12 @@
     recursive = true;
   };
 
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     git-crypt
     gitui
     lazygit
   ];
-     
+
   programs.git = {
     enable = true;
     delta.enable = true;
@@ -25,6 +24,6 @@
       include.path = "~/.config/delta/themes.gitconfig";
       delta.features = "catppuccin";
     };
-    ignores = [ ".direnv" "result" ];
+    ignores = [".direnv" "result"];
   };
 }

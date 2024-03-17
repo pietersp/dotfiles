@@ -75,8 +75,6 @@ in {
     '';
   };
 
-
-
   home.shellAliases = {
     htop = "btm";
     hm = "home-manager";
@@ -86,7 +84,6 @@ in {
     hms = "home-manager switch --flake ~/dotfiles#${username}@$(hostname) && hmgd";
     hmu = "nix flake update ~/dotfiles && hms";
   };
-
 
   programs.carapace = {enable = false;};
 
@@ -102,7 +99,6 @@ in {
     enable = true;
     enableZshIntegration = true;
   };
-
 
   programs.gpg = {
     enable = true;
@@ -123,7 +119,6 @@ in {
     enableZshIntegration = true;
     keys = ["~/.ssh/github"];
   };
-
 
   programs.mcfly = {
     enable = false;
@@ -155,7 +150,6 @@ in {
       };
     };
   };
-
 
   programs.tealdeer = {
     enable = true;
