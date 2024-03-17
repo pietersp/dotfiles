@@ -18,6 +18,15 @@
       url = "github:cachix/devenv/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Secrets management 
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Official NixOS hardware packages
+    hardware.url = "github:nixos/nixos-hardware";
   };
 
   outputs = inputs @ {
