@@ -3,8 +3,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "LunarVim";
       repo = "LunarVim";
-      rev = "b124e8c3e3f8145029c0d9aeb3912e5ac314e0a2";
-      sha256 = "J2E4BQfyrZ9HvuDDCLFm6wj8S9QQ2lEo9PwsJkjcbuY=";
+      rev = "9ee3b7b8846d7ed2fa79f03d67083f8b95c897f2";
+      sha256 = "sha256-grCEaLJrcPMdM9ODWSExcNsc+G+QmEmZ7EBfBeEVeGU=";
     };
     patches = [];
   });
