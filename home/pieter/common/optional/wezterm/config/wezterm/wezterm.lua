@@ -2,17 +2,17 @@ local wezterm = require 'wezterm'
 
 return {
   font = wezterm.font_with_fallback {
-    {
-      family = "Monaspace Neon",
-      weight = "Medium",
-      stretch = "Normal",
-      style = "Normal",
-      harfbuzz_features = { 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig' }
-    },
     { family = "FiraCode Nerd Font", weight = "Medium", stretch = "Normal", style = "Normal" },
+    -- {
+    --   family = "MonaspiceNe Nerd Font",
+    --   weight = "Medium",
+    --   stretch = "Normal",
+    --   style = "Normal",
+    --   harfbuzz_features = { 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig' }
+    -- },
     "Noto Color Emoji"
   },
-  font_size = 16.0,
+  font_size = 12.0,
   enable_tab_bar = false,
   -- default_domain = "WSL:Ubuntu",
   --window_background_opacity = 0.1,

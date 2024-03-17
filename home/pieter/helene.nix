@@ -12,6 +12,6 @@
 
     # Host specific optional configs
     common/optional/wezterm
-    common/optional/desktops/hyprland
+    #common/optional/desktops/hyprland
   ];
 }

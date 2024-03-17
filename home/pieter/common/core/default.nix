@@ -55,10 +55,13 @@ in {
     unzip
     xh
     zip
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Monaspace" ]; })
   ];
 
   # This should source the nix.sh automatically
   targets.genericLinux.enable = true;
+
+  fonts.fontconfig.enable = true;
 
   home.sessionPath = ["$HOME/.local/bin"];
 
