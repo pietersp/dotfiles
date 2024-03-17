@@ -54,6 +54,7 @@
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     nixosConfigurations = {
+      # VM to test full NixOS setup on enceladus
       nixos-tutorial = lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
@@ -61,6 +62,8 @@
           ./hosts/nixos-tutorial/configuration.nix
         ];
       };
+      # WSL2 installation on enceladus
+      # TODO: See if you can rename
       nixos = lib.nixosSystem {
         pkgs = pkgsFor.x86_64-linux;
         specialArgs = {inherit inputs outputs;};
@@ -69,6 +72,7 @@
           ./hosts/wsl/wsl.nix
         ];
       };
+      # T490 NixOs Laptop
       helene = lib.nixosSystem {
         pkgs = pkgsFor.x86_64-linux;
         specialArgs = {inherit inputs outputs;};
