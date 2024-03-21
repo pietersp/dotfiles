@@ -22,7 +22,7 @@
         # "QT_QPA_PLATFORM,wayland
       ];
       input = {
-        kb_options = "escape:swap"
+        kb_options = "caps:escape";
       };
     };
   };
