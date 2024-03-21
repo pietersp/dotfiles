@@ -11,7 +11,6 @@
 
     bind = let
       workspaces = [
-        "0"
         "1"
         "2"
         "3"
@@ -56,6 +55,7 @@
       [
         #################### Program Launch ####################
         "SHIFTALT,Return,exec,wezterm"
+        "SHIFTALT,w,exec,firefox"
 
         #################### Basic Bindings ####################
         "SHIFTALT,q,killactive"
