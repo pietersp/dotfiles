@@ -67,7 +67,7 @@
     in
       [
         #################### Program Launch ####################
-        "SHIFTALT,Return,exec,kitty"
+        "SHIFTALT,Return,exec,wezterm"
 
         #################### Basic Bindings ####################
         "SHIFTALT,q,killactive"
