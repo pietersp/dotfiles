@@ -54,11 +54,12 @@
     in
       [
         #################### Program Launch ####################
-        "SHIFTALT,Return,exec,wezterm"
-        "SHIFTALT,w,exec,firefox"
+        "SUPER,Return,exec,wezterm"
+        "SUPER,w,exec,firefox"
+        "SUPER,space,exec,rofi-launcher"
 
         #################### Basic Bindings ####################
-        "SHIFTALT,q,killactive"
+        "SUPER,q,killactive"
         "SUPERSHIFT,e,exit"
 
         "SUPER,s,togglesplit"
@@ -84,38 +85,38 @@
       # Change workspace
       (map
         (
-          n: "ALT,${n},workspace,name:${n}"
+          n: "SUPER,${n},workspace,name:${n}"
         )
         workspaces)
       ++
       # Move window to workspace
       (map
         (
-          n: "SHIFTALT,${n},movetoworkspacesilent,name:${n}"
+          n: "SUPERSHIFT,${n},movetoworkspacesilent,name:${n}"
         )
         workspaces)
       ++
       # Move focus
       (lib.mapAttrsToList
         (
-          key: direction: "ALT,${key},movefocus,${direction}"
+          key: direction: "SUPER,${key},movefocus,${direction}"
         )
         directions)
       ++
       # Swap windows
       (lib.mapAttrsToList
         (
-          key: direction: "SUPERSHIFT,${key},swapwindow,${direction}"
+          key: direction: "SHIFTALT,${key},swapwindow,${direction}"
         )
         directions)
       ++
       # Move windows
-      (lib.mapAttrsToList
-        (
-          key: direction: "SHIFTALT,${key},movewindoworgroup,${direction}"
-        )
-        directions)
-      ++
+      # (lib.mapAttrsToList
+      #   (
+      #     key: direction: "SHIFTALT,${key},movewindoworgroup,${direction}"
+      #   )
+      #   directions)
+      # ++
       # Move monitor focus
       (lib.mapAttrsToList
         (
