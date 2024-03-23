@@ -14,4 +14,8 @@
     common/optional/wezterm
     common/optional/desktops/hyprland
   ];
+
+  home.packages = with pkgs; [
+    (import ./../../scripts/rofi-launcher.nix {inherit pkgs;})
+  ];
 }
