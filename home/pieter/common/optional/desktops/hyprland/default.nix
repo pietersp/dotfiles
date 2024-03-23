@@ -4,7 +4,11 @@
   ...
 }: {
 
-  imports = [ ./binds.nix ];
+  imports = [ 
+    ./binds.nix 
+    ./waybar.nix
+    ./wofi.nix
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
