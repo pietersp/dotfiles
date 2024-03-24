@@ -43,18 +43,15 @@
     LC_TIME = "en_ZA.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.xkbOptions = "caps:escape";
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
+  # Configure x11
   services.xserver = {
-    layout = "za";
-    xkbVariant = "";
+    enable = true;
+    displayManager.gdm.enable = true;
+    xkb = {
+      layout = "za";
+      variant = ""; 
+      options = "caps:escape";
+    };
   };
 
   # Enable CUPS to print documents.
