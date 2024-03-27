@@ -26,7 +26,7 @@
     };
 
     # Official NixOS hardware packages
-    hardware.url = "github:nixos/nixos-hardware";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
   outputs = inputs @ {
@@ -34,6 +34,7 @@
     nixpkgs,
     home-manager,
     nixos-wsl,
+    nixos-hardware,
     ...
   }: let
     inherit (self) outputs;
@@ -86,6 +87,7 @@
         pkgs = pkgsFor.x86_64-linux;
         specialArgs = {inherit inputs outputs;};
         modules = [
+          nixos-hardware.nixosModules.lenovo-thinkpad-t490
           ./hosts/helene/configuration.nix
         ];
       };
