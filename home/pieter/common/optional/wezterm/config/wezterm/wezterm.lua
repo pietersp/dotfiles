@@ -20,5 +20,6 @@ return {
   -- win32_system_backdrop = 'Tabbed',
   color_scheme = "Catppuccin Mocha",
   audible_bell = "Disabled",
-  adjust_window_size_when_changing_font_size = false
+  adjust_window_size_when_changing_font_size = false,
+  enable_wayland = false
 }
