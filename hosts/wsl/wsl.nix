@@ -7,6 +7,10 @@
   time.timeZone = "Africa/Johannesburg";
 
   programs.zsh.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    package = inputs.nix-ld-rs.packages."${pkgs.system}".nix-ld-rs;
+  };
   environment.shells = [pkgs.zsh];
 
   users.users.pieter = {
