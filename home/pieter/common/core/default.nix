@@ -44,6 +44,7 @@ in {
     mods
     neovim
     nodejs
+    nvd # nix visual diff
     procs
     ripgrep
     #    ripgrep-all
@@ -66,6 +67,10 @@ in {
 
   home.sessionPath = ["$HOME/.local/bin"];
 
+  home.sessionVariables = {
+    "ZELLIJ_AUTO_ATTACH" = "true";
+  };
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -83,7 +88,7 @@ in {
     htop = "btm";
     hm = "home-manager";
     hmgd = ''
-      home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nix store diff-closures'';
+      home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nvd diff'';
     hmp = "home-manager packages";
     hms = "home-manager switch --flake ~/dotfiles#${username}@$(hostname) && hmgd";
     hmu = "nix flake update ~/dotfiles && hms";
