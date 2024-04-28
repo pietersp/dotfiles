@@ -25,6 +25,7 @@ in {
   home.packages = with pkgs; [
     inputs.devenv
     bottom
+    bun
     cachix
     chafa
     cht-sh
