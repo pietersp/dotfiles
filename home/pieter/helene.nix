@@ -25,7 +25,7 @@
   qt.enable = true;
   qt.style.package = pkgs.catppuccin-kvantum;
   qt.style.name = "catppuccin-kvantum";
-  qt.platformTheme = "gtk";
+  qt.platformTheme.name = "gtk";
 
 
 
