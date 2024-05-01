@@ -69,7 +69,7 @@ in {
   home.sessionPath = ["$HOME/.local/bin"];
 
   home.sessionVariables = {
-    "ZELLIJ_AUTO_ATTACH" = "true";
+    # "ZELLIJ_AUTO_ATTACH" = "true";
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
