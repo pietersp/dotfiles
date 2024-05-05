@@ -33,6 +33,12 @@
       url = "github:nix-community/nix-ld-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # vscode remote server required for WSL
+    # see github for follow up steps required (eg, systemd setup)
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+     };
   };
 
   outputs = inputs @ {
@@ -41,6 +47,7 @@
     home-manager,
     nixos-wsl,
     nixos-hardware,
+    vscode-server,
     ...
   }: let
     inherit (self) outputs;
@@ -85,6 +92,11 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           nixos-wsl.nixosModules.wsl
+          vscode-server.nixosModules.default
+          ({ config, pkgs, ... }: {
+            services.vscode-server.enable = true;
+            services.vscode-server.installPath = "$HOME/.vscode-server";
+          })
           ./hosts/wsl/wsl.nix
         ];
       };
