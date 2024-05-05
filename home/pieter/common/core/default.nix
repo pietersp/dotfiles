@@ -27,6 +27,7 @@ in {
     bottom
     bun
     cachix
+    cabal-install
     chafa
     cht-sh
     # csvkit
@@ -34,6 +35,8 @@ in {
     fd
     file
     gcc
+    ghc
+    haskell-language-server
     gnumake
     grc
     glow
