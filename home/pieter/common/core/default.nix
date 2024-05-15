@@ -24,6 +24,7 @@ in {
 
   home.packages = with pkgs; [
     inputs.devenv
+    atac
     bottom
     bun
     cachix
