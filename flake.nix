@@ -34,6 +34,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # TODO: Still needs to be integrated
+    unison-lang = {
+      url = "github:ceedubs/unison-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # vscode remote server required for WSL
     # see github for follow up steps required (eg, systemd setup)
     vscode-server = {
