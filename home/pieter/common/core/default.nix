@@ -46,7 +46,7 @@ in {
     jsonnet
     keychain
     mediainfo
-    mods
+    # mods
     neovim
     nodejs
     nvd # nix visual diff
@@ -57,7 +57,7 @@ in {
     skaffold
     skate
     sqlite
-    stow
+    # stow
     tree
     unzip
     xh
