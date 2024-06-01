@@ -36,9 +36,7 @@
       ];
       input = {
         kb_options = "caps:escape";
-        touchpad = {
-          natural_scroll = true;
-        };
+        natural_scroll = true;
       };
     };
   };
