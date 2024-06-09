@@ -17,6 +17,8 @@
   ];
   home.packages = with pkgs; [
     keepass
+    pavucontrol
+    pulsemixer
   ];
 
   gtk.enable = true;
