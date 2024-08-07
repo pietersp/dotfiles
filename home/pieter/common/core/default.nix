@@ -33,11 +33,13 @@ in {
     cht-sh
     # csvkit
     du-dust
+    erlang
     fd
     file
     gcc
-    ghc
-    haskell-language-server
+    # gleam
+    # ghc
+    # haskell-language-server
     gnumake
     grc
     glow
