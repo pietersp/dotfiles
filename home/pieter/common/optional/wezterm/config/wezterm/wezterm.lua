@@ -12,6 +12,7 @@ return {
     -- },
     "Noto Color Emoji"
   },
+  front_end = "WebGpu",
   font_size = 12.0,
   enable_tab_bar = false,
   -- default_domain = "WSL:Ubuntu",
