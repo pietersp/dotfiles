@@ -28,12 +28,6 @@
     # Official NixOS hardware packages
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
-    # run unpatched dynamic binaries, needed for vscode on WSL
-    nix-ld-rs = {
-      url = "github:nix-community/nix-ld-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # TODO: Still needs to be integrated
     unison-lang = {
       url = "github:ceedubs/unison-nix";

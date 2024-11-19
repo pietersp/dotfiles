@@ -7,10 +7,6 @@
   time.timeZone = "Africa/Johannesburg";
 
   programs.zsh.enable = true;
-  programs.nix-ld = {
-    enable = true;
-    package = inputs.nix-ld-rs.packages."${pkgs.system}".nix-ld-rs;
-  };
   environment.shells = [pkgs.zsh];
 
   users.users.pieter = {
@@ -65,7 +61,7 @@
       "/nix/var/nix/profiles/per-user/root/channels"
     ];
 
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     extraOptions = ''experimental-features = nix-command flakes'';
   };
 }
