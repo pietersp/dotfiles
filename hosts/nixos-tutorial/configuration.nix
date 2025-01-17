@@ -92,7 +92,7 @@
   ];
   fonts.packages = with pkgs; [
     monaspace
-    (nerdfonts.override {fonts = ["FiraCode"];})
+    nerd-fonts.fira-code
     noto-fonts-color-emoji
   ];
 

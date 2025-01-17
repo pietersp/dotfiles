@@ -64,7 +64,8 @@ in {
     unzip
     xh
     zip
-    (pkgs.nerdfonts.override {fonts = ["FiraCode" "DroidSansMono" "Monaspace"];})
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
   ];
 
   # This should source the nix.sh automatically
