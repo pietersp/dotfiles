@@ -60,6 +60,7 @@ in {
     skate
     sqlite
     # stow
+    superfile
     tree
     unzip
     xh
