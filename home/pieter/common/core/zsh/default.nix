@@ -42,7 +42,7 @@
       }
     ];
 
-    initExtra = ''
+    initContent = ''
 
       # allow v to open current line in editor when in cmd mode
       autoload edit-command-line; zle -N edit-command-line
