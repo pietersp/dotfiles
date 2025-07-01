@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +50,7 @@
     self,
     nixpkgs,
     home-manager,
+    nix-darwin,
     nixos-wsl,
     nixos-hardware,
     vscode-server,
@@ -111,6 +117,14 @@
       };
     };
 
+    darwinConfigurations = {
+      "tethys" = nix-darwin.lib.darwinSystem {
+        system = pkgsFor.aarch64-darwin;
+        specialArgs = {inherit inputs outputs;};
+        modules = [ ./hosts/tethys/configuration.nix ];
+      };
+    };
+
     homeConfigurations = {
       "pieter@nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
@@ -120,6 +134,11 @@
       "pieter@helene" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         modules = [./home/pieter/helene.nix];
+        extraSpecialArgs = {inherit inputs outputs;};
+      };
+      "pieter@tethys" = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsFor.aarch64-darwin;
+        modules = [ ./home/pieter/tethys.nix ];
         extraSpecialArgs = {inherit inputs outputs;};
       };
     };
