@@ -13,6 +13,7 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     vim
+    wezterm
   ];
 
   homebrew = {
@@ -22,6 +23,10 @@
       "raycast"
     ];
   };
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+  ];
 
   # Use our custom packages
   #nixpkgs.overlays = [outputs.overlays.additions outputs.overlays.modifications outputs.overlays.unstable];
