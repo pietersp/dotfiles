@@ -17,8 +17,13 @@ in {
     ./zsh
   ];
 
-  home.username = "${username}";
-  home.homeDirectory = "/home/${username}";
+  home = {
+    username = "${username}";
+    homeDirectory =
+      if pkgs.stdenv.isDarwin
+      then "/Users/${username}"
+      else "/home/${username}";
+  };
 
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
@@ -70,7 +75,10 @@ in {
   ];
 
   # This should source the nix.sh automatically
-  targets.genericLinux.enable = true;
+  targets.genericLinux.enable =
+    if pkgs.stdenv.isDarwin
+    then false
+    else true;
 
   fonts.fontconfig.enable = true;
 
@@ -97,7 +105,7 @@ in {
     htop = "btm";
     hm = "home-manager";
     hmgd = ''
-      home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nvd diff'';
+      home-manager generations | head -n 2 | tail -r | cut -d " " -f 7 | xargs nvd diff'';
     hmp = "home-manager packages";
     hms = "home-manager switch --flake ~/dotfiles#${username}@$(hostname) && hmgd";
     hmu = "nix flake update ~/dotfiles && hms";
@@ -157,17 +165,6 @@ in {
     ];
   };
 
-  # job management
-  services.pueue = {
-    enable = true;
-    settings = {
-      shared = {
-        use_unix_socket = true;
-        host = "127.0.0.1";
-        port = "6924";
-      };
-    };
-  };
 
   programs.tealdeer = {
     enable = true;
