@@ -9,7 +9,7 @@
   imports = [
     ./common/core
     # ./common/optional/desktops # No desktop for mac
-    # ./common/optional/ides/intellij
+    ./common/optional/ides/intellij
     ./common/optional/wezterm
   ];
 
