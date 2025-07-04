@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    catppuccin.url = "github:catppuccin/nix";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +50,7 @@
 
   outputs = inputs @ {
     self,
+    catppuccin,
     nixpkgs,
     home-manager,
     nix-darwin,
@@ -138,7 +141,10 @@
       };
       "pieter@tethys" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.aarch64-darwin;
-        modules = [ ./home/pieter/tethys.nix ];
+        modules = [ 
+	  ./home/pieter/tethys.nix 
+	  catppuccin.homeModules.catppuccin
+	];
         extraSpecialArgs = {inherit inputs outputs;};
       };
     };
