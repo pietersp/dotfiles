@@ -179,7 +179,7 @@ in {
   programs.zellij = {
     enable = true;
     enableZshIntegration = true;
-    settings = {theme = "catppuccin-mocha"; show_startup_tips = false;};
+    settings = {show_startup_tips = false;};
   };
 
   # Let Home Manager install and manage itself.
@@ -188,5 +188,6 @@ in {
   catppuccin = {
     flavor = "mocha";
     accent = "lavender";
+    enable = true;
   };
 }

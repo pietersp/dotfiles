@@ -20,10 +20,6 @@
     delta.enable = true;
     userEmail = "pietersp@gmail.com";
     userName = "Pieter Prinsloo";
-    extraConfig = {
-      include.path = "~/.config/delta/themes.gitconfig";
-      delta.features = "catppuccin";
-    };
     ignores = [".direnv" "result"];
   };
 }
