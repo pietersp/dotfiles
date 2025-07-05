@@ -131,12 +131,18 @@
     homeConfigurations = {
       "pieter@nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
-        modules = [./home/pieter/nixos.nix];
+        modules = [
+	  ./home/pieter/nixos.nix
+	  catppuccin.homeModules.catppuccin
+	];
         extraSpecialArgs = {inherit inputs outputs;};
       };
       "pieter@helene" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
-        modules = [./home/pieter/helene.nix];
+        modules = [
+	  ./home/pieter/helene.nix
+	  catppuccin.homeModules.catppuccin
+	];
         extraSpecialArgs = {inherit inputs outputs;};
       };
       "pieter@tethys" = home-manager.lib.homeManagerConfiguration {
