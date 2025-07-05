@@ -1,9 +1,4 @@
 {pkgs, ...}: {
-  xdg.configFile.delta = {
-    source = ./config/delta;
-    recursive = true;
-  };
-
   xdg.configFile.gitui = {
     source = ./config/gitui;
     recursive = true;
