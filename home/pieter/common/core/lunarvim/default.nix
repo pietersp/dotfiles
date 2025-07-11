@@ -18,5 +18,5 @@ in {
     recursive = true;
   };
 
-  home.sessionVariables = {EDITOR = "lvim";};
+  #  home.sessionVariables = {EDITOR = "lvim";};
 }
