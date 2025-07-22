@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  xdg.configFile.gitui = {
-    source = ./config/gitui;
-    recursive = true;
-  };
 
   home.packages = with pkgs; [
     git-crypt #TODO: Replace this with sops
