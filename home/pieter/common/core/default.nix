@@ -10,7 +10,6 @@ in {
     ./bat
     ./git
     ./lesspipe
-    # ./lunarvim
     ./fzf
     ./starship
     ./yazi
