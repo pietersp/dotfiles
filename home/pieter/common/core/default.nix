@@ -107,7 +107,7 @@ in {
     htop = "btm";
     hm = "home-manager";
     hmgd = ''
-      home-manager generations | head -n 2 | tail -r | cut -d " " -f 7 | xargs nvd diff'';
+      home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nvd diff'';
     hmp = "home-manager packages";
     hms = "home-manager switch --flake ~/dotfiles#${username}@$(hostname) && hmgd";
     hmu = "nix flake update ~/dotfiles && hms";
