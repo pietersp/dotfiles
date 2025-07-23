@@ -44,9 +44,9 @@
   };
 
   # Configure x11
+  services.displayManager.gdm.enable = true;
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
     xkb = {
       layout = "za";
       variant = ""; 
@@ -58,7 +58,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
