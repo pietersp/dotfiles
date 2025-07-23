@@ -28,7 +28,7 @@ in {
 
   home.packages = with pkgs; [
     inputs.my-nixvim.packages.${pkgs.system}.default
-    inputs.devenv
+    devenv
     atac
     bottom
     bun
