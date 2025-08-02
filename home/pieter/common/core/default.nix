@@ -65,7 +65,7 @@ in {
     skate
     sqlite
     # stow
-    superfile
+    # superfile 2025-08-03 Broken
     tree
     unzip
     xh
