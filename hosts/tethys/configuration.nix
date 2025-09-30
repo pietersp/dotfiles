@@ -20,7 +20,9 @@
     enable = true;
     onActivation.cleanup = "zap";
     casks = [
+      "keepassxc"
       "raycast"
+      "syncthing-app"
     ];
   };
 
