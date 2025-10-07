@@ -50,7 +50,7 @@ in {
     glow
     gum
     hex
-    jsonnet
+    #jsonnet # disabled due to compilation failure 20251008
     keychain
     mediainfo
     # mods
