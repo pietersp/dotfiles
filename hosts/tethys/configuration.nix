@@ -23,6 +23,7 @@
       "keepassxc"
       "raycast"
       "syncthing-app"
+      "google-drive"
     ];
   };
 
