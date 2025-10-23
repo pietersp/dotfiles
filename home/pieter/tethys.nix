@@ -14,6 +14,14 @@
     ./common/optional/wezterm
   ];
 
+  # This is needed because darwin installed podman but it is not present on the path.
+  # Might be a better way to do this
+  home.sessionPath = [ "/opt/podman/bin" ];
+
+  programs.zsh.shellAliases = {
+    docker = "podman";
+  };
+
   # Set a target for home-manager to link to
   # home = {
   # username = "pieter";

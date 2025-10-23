@@ -25,6 +25,7 @@
       "syncthing-app"
       "google-drive"
       "visual-studio-code"
+      "podman-desktop"
     ];
   };
 
