@@ -2,15 +2,21 @@
 
   home.packages = with pkgs; [
     git-crypt #TODO: Replace this with sops
-    gitui
+    # gitui
     lazygit
   ];
 
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
+
   programs.git = {
     enable = true;
-    delta.enable = true;
-    userEmail = "pietersp@gmail.com";
-    userName = "Pieter Prinsloo";
+    settings.user = {
+      email = "pietersp@gmail.com";
+      name = "Pieter Prinsloo";
+    };
     ignores = [".direnv" "result"];
   };
 }
