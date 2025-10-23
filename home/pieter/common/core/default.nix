@@ -42,6 +42,7 @@ in {
     fd
     file
     gcc
+    gemini-cli
     # gleam
     # ghc
     # haskell-language-server

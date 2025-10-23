@@ -24,6 +24,7 @@
       "raycast"
       "syncthing-app"
       "google-drive"
+      "visual-studio-code"
     ];
   };
 
