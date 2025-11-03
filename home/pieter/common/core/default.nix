@@ -27,7 +27,7 @@ in {
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    inputs.my-nixvim.packages.${pkgs.system}.default
+    inputs.my-nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
     devenv
     atac
     bottom
@@ -111,7 +111,7 @@ in {
     hmp = "home-manager packages";
     hms = "home-manager switch --flake ~/dotfiles#${username}@$(hostname) && hmgd";
     hmu = "nix flake update ~/dotfiles && hms";
-    pvim = "${inputs.my-nixvim.packages.${pkgs.system}.default}/bin/nvim";
+    pvim = "${inputs.my-nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/nvim";
   };
 
   programs.carapace = {enable = false;};
