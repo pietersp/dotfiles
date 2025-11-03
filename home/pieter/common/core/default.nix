@@ -37,7 +37,7 @@ in {
     chafa
     cht-sh
     # csvkit
-    du-dust
+    dust
     erlang
     fd
     file
@@ -138,7 +138,7 @@ in {
 
   programs.java = {
     enable = true;
-    package = pkgs.graalvm-ce;
+    package = pkgs.graalvmPackages.graalvm-ce;
   };
 
   programs.jq = {enable = true;};
