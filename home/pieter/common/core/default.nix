@@ -36,6 +36,7 @@ in {
     cabal-install
     chafa
     cht-sh
+    cloudflared
     # csvkit
     dust
     erlang
