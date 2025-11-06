@@ -68,6 +68,7 @@ in {
     sqlite
     # stow
     # superfile 2025-08-03 Broken
+    tailscale
     tree
     unzip
     xh
