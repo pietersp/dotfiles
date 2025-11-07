@@ -19,6 +19,8 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
+    brews = [];
+    taps = [];
     casks = [
       "keepassxc"
       "raycast"
