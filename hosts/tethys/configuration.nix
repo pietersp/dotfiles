@@ -20,9 +20,12 @@
     enable = true;
     onActivation.cleanup = "zap";
     brews = [];
-    taps = [];
+    taps = [
+      "nikitabobko/tap"
+
+    ];
     casks = [
-      "nikitabobko/tap/aerospace"
+      "aerospace"
       "keepassxc"
       "raycast"
       "syncthing-app"
