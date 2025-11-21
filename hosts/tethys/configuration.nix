@@ -22,6 +22,7 @@
     brews = [];
     taps = [];
     casks = [
+      "nikitabobko/tap/aerospace"
       "keepassxc"
       "raycast"
       "syncthing-app"
