@@ -18,6 +18,10 @@
   # Might be a better way to do this
   home.sessionPath = [ "/opt/podman/bin" ];
 
+  home.packages = with pkgs; [
+    mpv
+  ];
+
   programs.zsh.shellAliases = {
     docker = "podman";
   };
