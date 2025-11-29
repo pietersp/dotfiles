@@ -38,6 +38,7 @@ in {
     cht-sh
     cloudflared
     # csvkit
+    devbox
     dust
     erlang
     fd
