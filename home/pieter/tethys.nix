@@ -20,6 +20,8 @@
 
   home.packages = with pkgs; [
     mpv
+    opencode
+    opencode-desktop
   ];
 
   programs.zsh.shellAliases = {
