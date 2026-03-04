@@ -22,6 +22,7 @@
     mpv
     opencode
     opencode-desktop
+    zed-editor
   ];
 
   programs.zsh.shellAliases = {
