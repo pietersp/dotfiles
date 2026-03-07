@@ -11,5 +11,6 @@
     common/core #required
     # Host specific optional configs
     # common/optional/wezterm
+    common/optional/ai/opencode
   ];
 }
