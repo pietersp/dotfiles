@@ -26,6 +26,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    podman-remote = {
+      url = "github:pietersp/podman-remote";
+      inputs.nixpkgs.follows = "nixpkgs"; 
+    };
+
     # Secrets management
     sops-nix = {
       url = "github:mic92/sops-nix";
