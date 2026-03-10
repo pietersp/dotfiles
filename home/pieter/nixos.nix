@@ -13,4 +13,6 @@
     # common/optional/wezterm
     common/optional/ai/opencode
   ];
+  # Try override for wsl
+  programs.zellij.enable = lib.mkForce false;
 }
