@@ -7,19 +7,18 @@
   ...
 }: {
   imports = [
-    # Required configs
-    common/core #required
-    # Host specific optional configs
-    # common/optional/wezterm
+    common/core
+
     common/optional/ai/opencode
     "${inputs.podman-remote}/home-manager.nix"
   ];
 
+  targets.genericLinux.enable = true;
+
   programs.podman-remote = {
     enable = true;
-    package = inputs.podman-remote.packages.x86_64-linux.podman-remote;
+    package = inputs.podman-remote.packages.${pkgs.stdenv.hostPlatform.system}.podman-remote;
   };
 
-  # Try override for wsl
   programs.zellij.enable = lib.mkForce false;
 }
