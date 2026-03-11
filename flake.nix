@@ -29,7 +29,7 @@
     };
 
     podman-remote = {
-      url = "github:pietersp/podman-remote";
+      url = "github:pietersp/podman-remote-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

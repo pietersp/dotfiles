@@ -315,16 +315,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1773187818,
-        "narHash": "sha256-reY0HkBDGCJroMV0kAzhLnWOKnJ5MBmcEl2vVr33460=",
+        "lastModified": 1773219944,
+        "narHash": "sha256-gfGZ6Orv7ebPgQ+VhLhwq2GjWfsi+1EbwBctViZxcLs=",
         "owner": "pietersp",
-        "repo": "podman-remote",
-        "rev": "8cd91d892058e25369c9f50ea096c58cf7d8c1e1",
+        "repo": "podman-remote-nix",
+        "rev": "70621ec2d820d90126621240a8f073ab5d812515",
         "type": "github"
       },
       "original": {
         "owner": "pietersp",
-        "repo": "podman-remote",
+        "repo": "podman-remote-nix",
         "type": "github"
       }
     },
