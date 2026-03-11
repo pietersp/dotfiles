@@ -50,8 +50,6 @@
       ];
 
       perSystem = { system, pkgs, ... }: {
-        _module.args.pkgs = pkgs;
-
         packages = import ./pkgs { inherit pkgs; };
 
         formatter = pkgs.alejandra;
