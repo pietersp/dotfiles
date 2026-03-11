@@ -22,7 +22,6 @@
     brews = [];
     taps = [
       "nikitabobko/tap"
-
     ];
     casks = [
       "aerospace"

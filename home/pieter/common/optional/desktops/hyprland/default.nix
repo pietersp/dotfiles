@@ -3,13 +3,10 @@
   lib,
   ...
 }: {
-
-  imports = [ 
-    ./binds.nix 
+  imports = [
+    ./binds.nix
     ./waybar.nix
   ];
-
-
 
   home.packages = with pkgs; [
     (import ./../../../../../../scripts/rofi-launcher.nix {inherit pkgs;})
@@ -24,7 +21,7 @@
       exec-once = [
         "waybar"
       ];
-    
+
       env = [
         "NIXOS_OZONE_WL, 1" # for ozone-based and electron apps to run on wayland
         "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland

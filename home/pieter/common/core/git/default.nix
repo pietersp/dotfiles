@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-
   home.packages = with pkgs; [
     git-crypt #TODO: Replace this with sops
     # gitui

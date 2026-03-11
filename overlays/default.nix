@@ -35,7 +35,6 @@
 #
 # Access the unstable nixpkgs:
 #   unstable = import inputs.nixpkgs-unstable { system = final.system; };
-
 {inputs}: {
   additions = final: _prev: import ../pkgs {pkgs = final;};
 

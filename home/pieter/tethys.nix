@@ -16,7 +16,7 @@
 
   # This is needed because darwin installed podman but it is not present on the path.
   # Might be a better way to do this
-  home.sessionPath = [ "/opt/podman/bin" ];
+  home.sessionPath = ["/opt/podman/bin"];
 
   home.packages = with pkgs; [
     mpv

@@ -42,19 +42,23 @@
   };
 
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         "x86_64-linux"
         "aarch64-linux"
         "aarch64-darwin"
       ];
 
-      perSystem = { system, pkgs, ... }: {
-        packages = import ./pkgs { inherit pkgs; };
+      perSystem = {
+        system,
+        pkgs,
+        ...
+      }: {
+        packages = import ./pkgs {inherit pkgs;};
 
         formatter = pkgs.alejandra;
 
-        devShells = import ./shells { inherit pkgs; };
+        devShells = import ./shells {inherit pkgs;};
       };
 
       flake = let
@@ -62,12 +66,12 @@
       in {
         inherit lib;
 
-        overlays = import ./overlays { inherit inputs; };
+        overlays = import ./overlays {inherit inputs;};
 
         nixosConfigurations = {
           nixos-tutorial = lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
+            specialArgs = {inherit inputs;};
             modules = [
               ./hosts/nixos-tutorial/configuration.nix
             ];
@@ -75,7 +79,7 @@
 
           nixos = lib.nixosSystem {
             pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-            specialArgs = { inherit inputs; };
+            specialArgs = {inherit inputs;};
             modules = [
               inputs.nixos-wsl.nixosModules.wsl
               ./hosts/wsl/wsl.nix
@@ -84,7 +88,7 @@
 
           helene = lib.nixosSystem {
             pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-            specialArgs = { inherit inputs; };
+            specialArgs = {inherit inputs;};
             modules = [
               inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
               ./hosts/helene/configuration.nix
@@ -95,8 +99,8 @@
         darwinConfigurations = {
           "tethys" = inputs.nix-darwin.lib.darwinSystem {
             pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
-            specialArgs = { inherit inputs; };
-            modules = [ ./hosts/tethys/configuration.nix ];
+            specialArgs = {inherit inputs;};
+            modules = [./hosts/tethys/configuration.nix];
           };
         };
 
@@ -107,7 +111,7 @@
               ./home/pieter/wsl.nix
               inputs.catppuccin.homeModules.catppuccin
             ];
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = {inherit inputs;};
           };
           "pieter@helene" = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -115,7 +119,7 @@
               ./home/pieter/helene.nix
               inputs.catppuccin.homeModules.catppuccin
             ];
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = {inherit inputs;};
           };
           "pieter@tethys" = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
@@ -123,7 +127,7 @@
               ./home/pieter/tethys.nix
               inputs.catppuccin.homeModules.catppuccin
             ];
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = {inherit inputs;};
           };
         };
       };

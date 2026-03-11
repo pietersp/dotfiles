@@ -171,7 +171,6 @@ in {
     ];
   };
 
-
   programs.tealdeer = {
     enable = true;
     settings = {display = {compact = true;};};

@@ -49,7 +49,7 @@
     enable = true;
     xkb = {
       layout = "za";
-      variant = ""; 
+      variant = "";
       options = "caps:escape";
     };
   };

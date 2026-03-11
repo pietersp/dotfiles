@@ -51,7 +51,6 @@
 #       chmod +x $out/bin/my-script
 #     '';
 #   };
-
 {pkgs}: rec {
   # Define custom packages here
   # Example:
