@@ -9,7 +9,7 @@ NixOS, WSL2, and Darwin configuration using Home Manager and flake-parts.
 ```bash
 # 1. Install Nix (enable flakes)
 # 2. Activate home-manager directly from GitHub (no clone needed)
-nix run home-manager -- switch --flake github:pietersp/dotfiles#pieter@nixos
+nix run home-manager -- switch --flake github:pietersp/dotfiles#pieter@wsl
 
 # 3. Clone for future use
 git clone https://github.com/pietersp/dotfiles.git ~/dotfiles

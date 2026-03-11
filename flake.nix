@@ -103,10 +103,10 @@
         };
 
         homeConfigurations = {
-          "pieter@nixos" = inputs.home-manager.lib.homeManagerConfiguration {
+          "pieter@wsl" = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
             modules = [
-              ./home/pieter/nixos.nix
+              ./home/pieter/wsl.nix
               inputs.catppuccin.homeModules.catppuccin
             ];
             extraSpecialArgs = { inherit inputs; };
