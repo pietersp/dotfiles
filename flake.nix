@@ -45,7 +45,6 @@
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         "x86_64-linux"
-        "aarch64-linux"
         "aarch64-darwin"
       ];
 
@@ -70,7 +69,7 @@
 
         nixosConfigurations = {
           nixos-tutorial = lib.nixosSystem {
-            system = "x86_64-linux";
+            pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
             specialArgs = {inherit inputs;};
             modules = [
               ./hosts/nixos-tutorial/configuration.nix
