@@ -50,12 +50,8 @@ nix run home-manager -- switch --flake github:pietersp/dotfiles#pieter@helene
 ## Development Shells
 
 ```bash
-# From GitHub
-nix develop github:pietersp/dotfiles#devShells.x86_64-linux.default
-
-# Or after cloning
-cd ~/dotfiles
-nix develop .#devShells.x86_64-linux.default
+# Auto-detects your architecture
+nix develop 
 ```
 
 ## Updating
