@@ -1,11 +1,21 @@
 {
   inputs,
+  outputs,
   config,
   pkgs,
   ...
 }: let
   username = "pieter";
 in {
+  nixpkgs = {
+    overlays = [
+      outputs.overlays.additions
+      outputs.overlays.modifications
+    ];
+    config = {
+      allowUnfree = true;
+    };
+  };
   imports = [
     ./bat
     ./gh

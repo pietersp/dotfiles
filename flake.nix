@@ -62,6 +62,8 @@
 
       flake = let
         lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
+        # Reference the flake outputs so they can be passed to modules (e.g., for overlays)
+        outputs = inputs.self;
       in {
         inherit lib;
 
@@ -110,7 +112,7 @@
               ./home/pieter/wsl.nix
               inputs.catppuccin.homeModules.catppuccin
             ];
-            extraSpecialArgs = {inherit inputs;};
+            extraSpecialArgs = {inherit inputs outputs;};
           };
           "pieter@helene" = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -118,7 +120,7 @@
               ./home/pieter/helene.nix
               inputs.catppuccin.homeModules.catppuccin
             ];
-            extraSpecialArgs = {inherit inputs;};
+            extraSpecialArgs = {inherit inputs outputs;};
           };
           "pieter@tethys" = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
@@ -126,7 +128,7 @@
               ./home/pieter/tethys.nix
               inputs.catppuccin.homeModules.catppuccin
             ];
-            extraSpecialArgs = {inherit inputs;};
+            extraSpecialArgs = {inherit inputs outputs;};
           };
         };
       };

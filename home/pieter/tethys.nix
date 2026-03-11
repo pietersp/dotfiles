@@ -9,6 +9,7 @@
   imports = [
     ./common/core
     # ./common/optional/desktops # No desktop for mac
+    ./common/optional/ai/metals-mcp
     ./common/optional/ides/intellij
     # ./common/optional/ides/vscode
     ./common/optional/wezterm

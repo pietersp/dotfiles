@@ -315,11 +315,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773219944,
-        "narHash": "sha256-gfGZ6Orv7ebPgQ+VhLhwq2GjWfsi+1EbwBctViZxcLs=",
+        "lastModified": 1773227203,
+        "narHash": "sha256-xiXoBXxqN57PDYFKr7+lKSjoKcWiKwWJytKhvJDRNm0=",
         "owner": "pietersp",
         "repo": "podman-remote-nix",
-        "rev": "70621ec2d820d90126621240a8f073ab5d812515",
+        "rev": "6913be4cb801fa342501794f37f0302ddb880086",
         "type": "github"
       },
       "original": {

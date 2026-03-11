@@ -56,4 +56,9 @@
   # Example:
   # my-package = pkgs.stdenv.mkDerivation { ... };
   # cd-gitroot = pkgs.callPackage ./cd-gitroot { };
+
+  metals-mcp = pkgs.callPackage ./metals-mcp {
+    jre = pkgs.jre;
+    metals = pkgs.metals;
+  };
 }
