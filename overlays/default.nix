@@ -39,20 +39,12 @@
   additions = final: _prev: import ../pkgs {pkgs = final;};
 
   modifications = final: prev: {
-    # Example: Override a package
-    # hello = prev.hello.override { };
-
-    # Example: Add build flags
-    # neovim = prev.neovim.overrideAttrs (oldAttrs: {
-    #   CMAKE_FLAGS = [ "-DCMAKE_BUILD_TYPE=Release" ];
-    # });
-
-    # Example: Patch a package
-    # ripgrep = prev.ripgrep.overrideAttrs (oldAttrs: {
-    #   patches = [ ./patches/ripgrep-fix.patch ];
-    # });
-
-    # Example: Use a package from another flake input
-    # my-custom-package = inputs.my-flake.packages.${final.system}.default;
+    direnv = prev.direnv.overrideAttrs (old: {
+      buildPhase = ''
+        sed -i 's/-linkmode=external/-linkmode=internal/g' GNUmakefile
+        make BASH_PATH=${prev.bash}/bin/bash
+      '';
+      dontCheck = true;
+    });
   };
 }
