@@ -16,7 +16,6 @@
       email = "pietersp@gmail.com";
       name = "Pieter Prinsloo";
     };
-    signing.format = "openpgp";
     ignores = [".direnv" "result"];
   };
 }
