@@ -21,5 +21,5 @@
     package = inputs.podman-remote.packages.${pkgs.stdenv.hostPlatform.system}.podman-remote;
   };
 
-  programs.zellij.enable = lib.mkForce false;
+
 }
