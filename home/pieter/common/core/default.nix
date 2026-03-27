@@ -16,16 +16,17 @@ in {
       allowUnfree = true;
     };
   };
-  imports = [
-    ./bat
-    ./gh
-    ./git
-    ./lesspipe
-    ./fzf
-    ./starship
-    ./yazi
-    ./zsh
-  ];
+   imports = [
+     ./bat
+     ./gh
+     ./git
+     ./lesspipe
+     ./fzf
+     ./starship
+     ./yazi
+     ./zsh
+     ./zellij
+   ];
 
   home = {
     username = "${username}";
@@ -186,16 +187,10 @@ in {
     settings = {display = {compact = true;};};
   };
 
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.zellij = {
-    enable = true;
-    enableZshIntegration = false;
-    settings = {show_startup_tips = false;};
-  };
+   programs.zoxide = {
+     enable = true;
+     enableZshIntegration = true;
+   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
