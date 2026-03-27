@@ -192,7 +192,7 @@ in {
   };
 
   programs.zellij = {
-    enable = true;
+    enable = false;
     enableZshIntegration = true;
     settings = {show_startup_tips = false;};
   };

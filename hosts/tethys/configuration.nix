@@ -19,7 +19,8 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
-    brews = [];
+    brews = [
+    ];
     taps = [
       "nikitabobko/tap"
     ];
