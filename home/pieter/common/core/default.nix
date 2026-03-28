@@ -82,6 +82,7 @@ in {
     # superfile 2025-08-03 Broken
     tailscale
     tree
+    uv
     unzip
     xh
     zip

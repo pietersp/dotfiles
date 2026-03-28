@@ -21,8 +21,6 @@
 
   home.packages = with pkgs; [
     mpv
-    opencode
-    opencode-desktop
     zed-editor
   ];
 

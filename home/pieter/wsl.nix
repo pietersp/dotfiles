@@ -8,7 +8,6 @@
 }: {
   imports = [
     common/core
-    common/optional/ai/opencode
     common/optional/ai/gemini
     common/optional/ai/metals-mcp
     "${inputs.podman-remote}/home-manager.nix"
