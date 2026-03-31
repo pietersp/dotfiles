@@ -52,7 +52,7 @@
       # - Skip if in nix-shell/develop
       # - Skip if non-interactive (e.g., scp, ssh, zed)
       if [[ -o interactive && -z "$ZELLIJ" && -z "$IN_NIX_SHELL" ]]; then
-        zellij attach --create
+        zellij attach main --create
       fi
 
       # use tab to accept suggestion
