@@ -64,6 +64,15 @@
         lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
         # Reference the flake outputs so they can be passed to modules (e.g., for overlays)
         outputs = inputs.self;
+        gcModule = {
+          lib,
+          pkgs,
+          ...
+        }: {
+          system.activationScripts.postActivation.text = lib.mkAfter ''
+            ${pkgs.nix}/bin/nix-collect-garbage --delete-older-than 3d
+          '';
+        };
       in {
         inherit lib;
 
@@ -74,6 +83,7 @@
             pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
             specialArgs = {inherit inputs;};
             modules = [
+              gcModule
               ./hosts/nixos-tutorial/configuration.nix
             ];
           };
@@ -83,6 +93,7 @@
             specialArgs = {inherit inputs;};
             modules = [
               inputs.nixos-wsl.nixosModules.wsl
+              gcModule
               ./hosts/wsl/wsl.nix
             ];
           };
@@ -92,6 +103,7 @@
             specialArgs = {inherit inputs;};
             modules = [
               inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
+              gcModule
               ./hosts/helene/configuration.nix
             ];
           };
@@ -101,7 +113,10 @@
           "tethys" = inputs.nix-darwin.lib.darwinSystem {
             pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
             specialArgs = {inherit inputs;};
-            modules = [./hosts/tethys/configuration.nix];
+            modules = [
+              gcModule
+              ./hosts/tethys/configuration.nix
+            ];
           };
         };
 

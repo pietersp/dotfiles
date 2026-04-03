@@ -196,6 +196,11 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  home.activation.expireGenerations = inputs.home-manager.lib.hm.dag.entryAfter ["writeBoundary"] ''
+    $DRY_RUN_CMD ${pkgs.home-manager}/bin/home-manager expire-generations "-3 days"
+    $DRY_RUN_CMD ${pkgs.nix}/bin/nix-collect-garbage --delete-older-than 3d
+  '';
+
   catppuccin = {
     flavor = "mocha";
     accent = "lavender";
