@@ -20,7 +20,8 @@
   home.sessionPath = ["/opt/podman/bin"];
 
   home.packages = with pkgs; [
-    mpv
+    # Avoid mpv-with-scripts here because yt-dlp now pulls in deno.
+    mpv-unwrapped
     zed-editor
   ];
 
