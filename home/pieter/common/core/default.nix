@@ -36,7 +36,7 @@ in {
       else "/home/${username}";
   };
 
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.stateVersion = "25.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
     inputs.my-nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
