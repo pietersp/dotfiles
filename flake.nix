@@ -112,7 +112,7 @@
         darwinConfigurations = {
           "tethys" = inputs.nix-darwin.lib.darwinSystem {
             pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
-            specialArgs = {inherit inputs;};
+            specialArgs = {inherit inputs outputs;};
             modules = [
               gcModule
               ./hosts/tethys/configuration.nix

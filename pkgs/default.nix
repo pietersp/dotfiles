@@ -61,4 +61,6 @@
     jre = pkgs.jre;
     metals = pkgs.metals;
   };
+
+  gemini-cli = pkgs.callPackage ./gemini-cli { };
 }
