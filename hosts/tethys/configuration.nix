@@ -14,7 +14,6 @@
   environment.systemPackages = with pkgs; [
     vim
     wezterm
-    outputs.packages.${pkgs.system}.gemini-cli
   ];
 
   homebrew = {

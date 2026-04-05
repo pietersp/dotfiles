@@ -23,6 +23,7 @@
     # Avoid mpv-with-scripts here because yt-dlp now pulls in deno.
     mpv-unwrapped
     zed-editor
+    outputs.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli
   ];
 
   programs.zsh.shellAliases = {
