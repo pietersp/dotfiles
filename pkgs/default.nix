@@ -63,4 +63,6 @@
   };
 
   gemini-cli = pkgs.callPackage ./gemini-cli { };
+
+  codex-cli = pkgs.callPackage ./codex-cli { };
 }

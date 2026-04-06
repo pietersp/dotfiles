@@ -24,6 +24,7 @@
     mpv-unwrapped
     zed-editor
     outputs.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli
+    outputs.packages.${pkgs.stdenv.hostPlatform.system}.codex-cli
   ];
 
   programs.zsh.shellAliases = {
