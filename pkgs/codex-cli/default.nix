@@ -56,18 +56,18 @@ pkgs.stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
     
-    # Install base package
-    mkdir -p $out/lib
-    cp -r package/* $out/lib/
+    # Install base package to unique subdirectory
+    mkdir -p $out/lib/codex-cli
+    cp -r package/* $out/lib/codex-cli/
     
     # Install platform-specific binary - it goes in node_modules/@openai/codex-
-    mkdir -p $out/lib/node_modules/@openai
-    cp -r platform_pkg/package $out/lib/node_modules/@openai/codex-${platformPkg.name}
+    mkdir -p $out/lib/codex-cli/node_modules/@openai
+    cp -r platform_pkg/package $out/lib/codex-cli/node_modules/@openai/codex-${platformPkg.name}
     
     # Create the binary wrapper pointing to the bundled cli
     mkdir -p $out/bin
     makeWrapper ${pkgs.nodejs}/bin/node $out/bin/codex \
-      --add-flags "$out/lib/bin/codex.js"
+      --add-flags "$out/lib/codex-cli/bin/codex.js"
     
     runHook postInstall
   '';
