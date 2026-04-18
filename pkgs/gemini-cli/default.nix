@@ -2,11 +2,11 @@
 
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "gemini-cli";
-  version = "0.37.1";
+  version = "0.38.2";
 
   src = pkgs.fetchurl {
     url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-${version}.tgz";
-    hash = "sha256-FKZjvUEhNZDWXfynlUYlMpEL8kA1ynAzXmOiu7fFt60=";
+    hash = "sha256-mwx1LP6TdTcOGBLzev/9lzh7md9x5kzqU+WIol9NaIw=";
   };
 
   nativeBuildInputs = with pkgs; [
