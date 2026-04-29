@@ -26,7 +26,7 @@
         file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
       }
       {
-        name = " jq-zsh-plugin ";
+        name = "jq-zsh-plugin";
         src = pkgs.fetchFromGitHub {
           owner = "reegnz";
           repo = "jq-zsh-plugin";

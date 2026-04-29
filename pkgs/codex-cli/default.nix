@@ -1,13 +1,13 @@
 { pkgs, lib }:
 
 let
-  version = "0.124.0";
-  
+  version = "0.125.0";
+
   # Platform-specific package mapping
   platformPkg = {
     "aarch64-darwin" = {
       name = "darwin-arm64";
-      hash = "sha256-0nivpc52sdx27hm42i79nc2l1amg03ynqxcsy5zh14hmbwxna8c2";
+      hash = "sha256-5yijM2sQTOdKTC6Qwvhrya5oHHnJBj3S/WJmpcoAAoE=";
     };
     "x86_64-darwin" = {
       name = "darwin-x64";
@@ -37,7 +37,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
   # Fetch the base package
   src = pkgs.fetchurl {
     url = "https://registry.npmjs.org/@openai/codex/-/codex-${version}.tgz";
-    hash = "sha256-1wj8b1sprq6cx4l2z2plnp5xji7bmmmwi1rmhd3f2vz34x0bwcnm";
+    hash = "sha256-fW9pf01VM7cowjX3glTMvc+rwIFPXVAipl3ZzFxUAZs=";
   };
 
   nativeBuildInputs = with pkgs; [
