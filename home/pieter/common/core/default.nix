@@ -16,17 +16,17 @@ in {
       allowUnfree = true;
     };
   };
-   imports = [
-     ./bat
-     ./gh
-     ./git
-     ./lesspipe
-     ./fzf
-     ./starship
-     ./yazi
-     ./zsh
-     ./zellij
-   ];
+  imports = [
+    ./bat
+    ./gh
+    ./git
+    ./lesspipe
+    ./fzf
+    ./starship
+    ./yazi
+    ./zsh
+    ./zellij
+  ];
 
   home = {
     username = "${username}";
@@ -188,17 +188,16 @@ in {
     settings = {display = {compact = true;};};
   };
 
-   programs.zoxide = {
-     enable = true;
-     enableZshIntegration = true;
-   };
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   home.activation.expireGenerations = inputs.home-manager.lib.hm.dag.entryAfter ["writeBoundary"] ''
     $DRY_RUN_CMD ${pkgs.home-manager}/bin/home-manager expire-generations "-3 days"
-    $DRY_RUN_CMD ${pkgs.nix}/bin/nix-collect-garbage --delete-older-than 3d
   '';
 
   catppuccin = {

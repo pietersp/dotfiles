@@ -9,6 +9,18 @@
   # Needed for determinate systems install
   nix.enable = false;
 
+  launchd.daemons.nix-gc = {
+    command = "${pkgs.nix}/bin/nix-collect-garbage --delete-older-than 7d";
+    serviceConfig = {
+      RunAtLoad = false;
+      StartCalendarInterval = {
+        Weekday = 0;
+        Hour = 3;
+        Minute = 0;
+      };
+    };
+  };
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
