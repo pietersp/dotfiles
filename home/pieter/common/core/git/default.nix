@@ -8,6 +8,12 @@
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
+    options = {
+      # Catppuccin's delta theme uses true-color hex values; force 24-bit
+      # output even when COLORTERM is not set (otherwise delta falls back to
+      # muddy 256-color approximations).
+      true-color = "always";
+    };
   };
 
   programs.git = {
