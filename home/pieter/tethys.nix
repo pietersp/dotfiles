@@ -42,8 +42,6 @@ in {
     mpv-unwrapped
     python3
     zed-editor
-    outputs.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli
-    outputs.packages.${pkgs.stdenv.hostPlatform.system}.codex-cli
     outputs.packages.${pkgs.stdenv.hostPlatform.system}.check-cli-versions
   ];
 

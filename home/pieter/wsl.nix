@@ -8,7 +8,6 @@
 }: {
   imports = [
     common/core
-    common/optional/ai/gemini
     "${inputs.podman-remote}/home-manager.nix"
   ];
 

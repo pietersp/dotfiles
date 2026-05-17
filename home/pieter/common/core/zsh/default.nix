@@ -43,6 +43,9 @@
     ];
 
     initContent = ''
+      # Source machine-local secrets outside the checked-in Home Manager config.
+      [[ -f ~/.config/private/env.zsh ]] && source ~/.config/private/env.zsh
+
       # allow v to open current line in editor when in cmd mode
       autoload edit-command-line; zle -N edit-command-line
       bindkey -M vicmd v edit-command-line

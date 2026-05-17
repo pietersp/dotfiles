@@ -57,7 +57,6 @@
   # my-package = pkgs.stdenv.mkDerivation { ... };
   # cd-gitroot = pkgs.callPackage ./cd-gitroot { };
 
-  gemini-cli = pkgs.callPackage ./gemini-cli { };
   codex-cli = pkgs.callPackage ./codex-cli { };
 
   check-cli-versions = pkgs.writeScriptBin "check-cli-versions" ''
@@ -65,12 +64,10 @@
 
     tools=(
       "opencode-ai"
-      "@google/gemini-cli"
       "@openai/codex"
     )
     cmds=(
       "opencode"
-      "gemini"
       "codex"
     )
 
