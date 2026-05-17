@@ -12,7 +12,6 @@
 
     # Host specific optional configs
     common/optional/wezterm
-    common/optional/ai/metals-mcp
     # common/optional/desktops/hyprland
     common/optional/ides/intellij
   ];

@@ -57,13 +57,7 @@
   # my-package = pkgs.stdenv.mkDerivation { ... };
   # cd-gitroot = pkgs.callPackage ./cd-gitroot { };
 
-  metals-mcp = pkgs.callPackage ./metals-mcp {
-    jre = pkgs.jre;
-    metals = pkgs.metals;
-  };
-
   gemini-cli = pkgs.callPackage ./gemini-cli { };
-
   codex-cli = pkgs.callPackage ./codex-cli { };
 
   check-cli-versions = pkgs.writeScriptBin "check-cli-versions" ''
