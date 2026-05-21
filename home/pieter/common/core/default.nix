@@ -78,6 +78,7 @@ in {
     skaffold
     skate
     sqlite
+    sops
     # stow
     # superfile 2025-08-03 Broken
     tailscale
@@ -86,6 +87,8 @@ in {
     unzip
     xh
     zip
+    age
+    age-plugin-yubikey
     nerd-fonts.fira-code
     nerd-fonts.droid-sans-mono
   ];
