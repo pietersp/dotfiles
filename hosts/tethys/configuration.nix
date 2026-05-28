@@ -32,6 +32,8 @@
     enable = true;
     onActivation.cleanup = "zap";
     brews = [
+      "openssh"
+      "yubico-piv-tool"
     ];
     taps = [
       "nikitabobko/tap"
