@@ -21,6 +21,7 @@ in {
     ./gh
     ./git
     ./lesspipe
+    ./languages/scala
     ./fzf
     ./starship
     ./yazi

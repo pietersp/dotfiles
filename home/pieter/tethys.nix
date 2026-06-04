@@ -44,6 +44,8 @@ in {
     outputs.packages.${pkgs.stdenv.hostPlatform.system}.check-cli-versions
   ];
 
+  languages.scala.enable = true;
+
   programs.obsidian = {
     enable = true;
     cli.enable = true;
