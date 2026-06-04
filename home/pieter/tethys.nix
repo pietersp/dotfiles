@@ -41,7 +41,6 @@ in {
     # Avoid mpv-with-scripts here because yt-dlp now pulls in deno.
     mpv-unwrapped
     python3
-    zed-editor
     outputs.packages.${pkgs.stdenv.hostPlatform.system}.check-cli-versions
   ];
 

@@ -53,8 +53,9 @@
       # Conditionally start zellij in interactive shells only
       # - Skip if already in zellij
       # - Skip if in nix-shell/develop
-      # - Skip if non-interactive (e.g., scp, ssh, zed)
-      if [[ -o interactive && -z "$ZELLIJ" && -z "$IN_NIX_SHELL" ]]; then
+      # - Skip if connected over SSH
+      # - Skip if non-interactive (e.g., scp, zed)
+      if [[ -o interactive && -z "$ZELLIJ" && -z "$IN_NIX_SHELL" && -z "$SSH_CONNECTION" && -z "$SSH_TTY" ]]; then
         zellij attach main --create
       fi
 

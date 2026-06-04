@@ -164,6 +164,7 @@ in {
   programs.keychain = {
     enable = true;
     enableZshIntegration = true;
+    extraFlags = ["--ssh-allow-forwarded"];
     keys = ["~/.ssh/github"];
   };
 
