@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     git-crypt #TODO: Replace this with sops
     # gitui
@@ -18,9 +22,12 @@
 
   programs.git = {
     enable = true;
-    settings.user = {
-      email = "pietersp@gmail.com";
-      name = "Pieter Prinsloo";
+    settings = {
+      gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers_git";
+      user = {
+        email = "pietersp@gmail.com";
+        name = "Pieter Prinsloo";
+      };
     };
     ignores = [".direnv" "result"];
   };

@@ -2,6 +2,7 @@
   inputs,
   outputs,
   config,
+  lib,
   pkgs,
   ...
 }: let
@@ -164,10 +165,18 @@ in {
 
   programs.keychain = {
     enable = true;
-    enableZshIntegration = true;
-    extraFlags = ["--ssh-allow-forwarded"];
+    enableZshIntegration = false;
+    enableXsessionIntegration = false;
     keys = ["~/.ssh/github"];
   };
+
+  programs.zsh.initContent = lib.mkOrder 600 ''
+    # In SSH sessions, keep forwarded Windows/YubiKey agents as-is.
+    # Running keychain here can select a cached local agent instead.
+    if [[ -z "$SSH_AUTH_SOCK" || ( -z "$SSH_CONNECTION" && -z "$SSH_TTY" ) ]]; then
+      eval "$(SHELL=zsh ${pkgs.keychain}/bin/keychain --eval --quiet ~/.ssh/github)"
+    fi
+  '';
 
   programs.mcfly = {
     enable = false;
