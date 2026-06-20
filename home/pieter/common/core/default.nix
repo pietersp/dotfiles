@@ -218,5 +218,6 @@ in {
     flavor = "mocha";
     accent = "lavender";
     enable = true;
+    autoEnable = true;
   };
 }
