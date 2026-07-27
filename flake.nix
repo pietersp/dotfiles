@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    herdr = {
+      url = "github:ogulcancelik/herdr/v0.7.5";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     my-nixvim = {
       url = "github:pietersp/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,11 +30,6 @@
 
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    podman-remote = {
-      url = "github:pietersp/podman-remote-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -62,28 +62,24 @@
 
       flake = let
         lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
-        # Reference the flake outputs so they can be passed to modules (e.g., for overlays)
+        # Reference package outputs from Home Manager modules.
         outputs = inputs.self;
-        gcModule = {
-          lib,
-          pkgs,
-          ...
-        }: {
-          system.activationScripts.postActivation.text = lib.mkAfter ''
-            ${pkgs.nix}/bin/nix-collect-garbage --delete-older-than 3d
-          '';
+        nixosGcModule = {
+          nix.gc = {
+            automatic = true;
+            dates = "weekly";
+            options = "--delete-older-than 7d";
+          };
         };
       in {
         inherit lib;
-
-        overlays = import ./overlays {inherit inputs;};
 
         nixosConfigurations = {
           nixos-tutorial = lib.nixosSystem {
             pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
             specialArgs = {inherit inputs;};
             modules = [
-              gcModule
+              nixosGcModule
               ./hosts/nixos-tutorial/configuration.nix
             ];
           };
@@ -93,7 +89,7 @@
             specialArgs = {inherit inputs;};
             modules = [
               inputs.nixos-wsl.nixosModules.wsl
-              gcModule
+              nixosGcModule
               ./hosts/wsl/wsl.nix
             ];
           };
@@ -103,7 +99,7 @@
             specialArgs = {inherit inputs;};
             modules = [
               inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
-              gcModule
+              nixosGcModule
               ./hosts/helene/configuration.nix
             ];
           };
@@ -114,7 +110,6 @@
             pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
             specialArgs = {inherit inputs outputs;};
             modules = [
-              gcModule
               ./hosts/tethys/configuration.nix
             ];
           };

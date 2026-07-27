@@ -1,6 +1,5 @@
 {
   inputs,
-  outputs,
   config,
   lib,
   pkgs,
@@ -8,15 +7,7 @@
 }: let
   username = "pieter";
 in {
-  nixpkgs = {
-    overlays = [
-      outputs.overlays.additions
-      outputs.overlays.modifications
-    ];
-    config = {
-      allowUnfree = true;
-    };
-  };
+  nixpkgs.config.allowUnfree = true;
   imports = [
     ./bat
     ./gh
@@ -27,11 +18,10 @@ in {
     ./starship
     ./yazi
     ./zsh
-    ./zellij
   ];
 
   home = {
-    username = "${username}";
+    username = username;
     homeDirectory =
       if pkgs.stdenv.isDarwin
       then "/Users/${username}"
@@ -41,6 +31,7 @@ in {
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
+    inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.my-nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
     devenv
     atac
@@ -51,37 +42,27 @@ in {
     chafa
     cht-sh
     cloudflared
-    # csvkit
     devbox
     dust
     fd
     file
     gcc
-    # gleam
-    # ghc
-    # haskell-language-server
     gnumake
     grc
     glow
     gum
     hex
-    #jsonnet # disabled due to compilation failure 20251008
     keychain
     mediainfo
-    # mods
-    # neovim
     nodejs
     nvd # nix visual diff
     procs
     ripgrep
-    #    ripgrep-all
     sd
     skaffold
     skate
     sqlite
     sops
-    # stow
-    # superfile 2025-08-03 Broken
     tailscale
     tree
     uv
@@ -95,10 +76,7 @@ in {
   ];
 
   # This should source the nix.sh automatically
-  targets.genericLinux.enable =
-    if pkgs.stdenv.isDarwin
-    then false
-    else true;
+  targets.genericLinux.enable = !pkgs.stdenv.isDarwin;
 
   fonts.fontconfig.enable = true;
 
@@ -106,17 +84,9 @@ in {
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    # "ZELLIJ_AUTO_ATTACH" = "true";
   };
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
     ".jq".text = ''
       def tocsv: (.[0] | keys_unsorted) as $keys | $keys, map([.[ $keys[] ]])[] | @csv;
     '';
@@ -132,8 +102,6 @@ in {
     hmu = "nix flake update ~/dotfiles && hms";
     pvim = "${inputs.my-nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/nvim";
   };
-
-  programs.carapace = {enable = false;};
 
   # direnv and nix-direnv
   programs.direnv = {
@@ -172,16 +140,10 @@ in {
   programs.zsh.initContent = lib.mkOrder 600 ''
     # In SSH sessions, keep forwarded Windows/YubiKey agents as-is.
     # Running keychain here can select a cached local agent instead.
-    if [[ -z "$SSH_AUTH_SOCK" || ( -z "$SSH_CONNECTION" && -z "$SSH_TTY" ) ]]; then
+    if [[ ! -S "$SSH_AUTH_SOCK" || ( -z "$SSH_CONNECTION" && -z "$SSH_TTY" ) ]]; then
       eval "$(SHELL=zsh ${pkgs.keychain}/bin/keychain --eval --quiet ~/.ssh/github)"
     fi
   '';
-
-  programs.mcfly = {
-    enable = false;
-    enableZshIntegration = true;
-    keyScheme = "vim";
-  };
 
   programs.nushell = {enable = true;};
 
@@ -209,9 +171,11 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.activation.expireGenerations = inputs.home-manager.lib.hm.dag.entryAfter ["writeBoundary"] ''
-    $DRY_RUN_CMD ${pkgs.home-manager}/bin/home-manager expire-generations "-3 days"
-  '';
+  services.home-manager.autoExpire = {
+    enable = true;
+    frequency = "daily";
+    timestamp = "-3 days";
+  };
 
   catppuccin = {
     flavor = "mocha";

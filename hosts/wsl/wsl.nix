@@ -16,7 +16,6 @@
   };
 
   environment.systemPackages = [
-    # (import ./win32yank.nix {inherit pkgs;})
     pkgs.git
     pkgs.wget
   ];

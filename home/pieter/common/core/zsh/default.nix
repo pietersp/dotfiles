@@ -50,15 +50,6 @@
       autoload edit-command-line; zle -N edit-command-line
       bindkey -M vicmd v edit-command-line
 
-      # Conditionally start zellij in interactive shells only
-      # - Skip if already in zellij
-      # - Skip if in nix-shell/develop
-      # - Skip if connected over SSH
-      # - Skip if non-interactive (e.g., scp, zed)
-      if [[ -o interactive && -z "$ZELLIJ" && -z "$IN_NIX_SHELL" && -z "$SSH_CONNECTION" && -z "$SSH_TTY" ]]; then
-        zellij attach main --create
-      fi
-
       # use tab to accept suggestion
       zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
       # needed for $group variable

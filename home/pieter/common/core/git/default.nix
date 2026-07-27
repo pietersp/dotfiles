@@ -3,11 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [
-    git-crypt #TODO: Replace this with sops
-    # gitui
-    lazygit
-  ];
+  home.packages = [pkgs.lazygit];
 
   programs.delta = {
     enable = true;
@@ -23,10 +19,14 @@
   programs.git = {
     enable = true;
     settings = {
+      commit.gpgSign = true;
+      gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers_git";
+      init.defaultBranch = "master";
       user = {
         email = "pietersp@gmail.com";
         name = "Pieter Prinsloo";
+        signingKey = "${config.home.homeDirectory}/.ssh/github.pub";
       };
     };
     ignores = [".direnv" "result"];

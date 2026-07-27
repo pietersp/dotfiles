@@ -1,11 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # Needed for determinate systems install
   nix.enable = false;
 
@@ -21,12 +14,7 @@
     };
   };
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-    vim
-    wezterm
-  ];
+  environment.systemPackages = [pkgs.vim];
 
   homebrew = {
     enable = true;
@@ -36,7 +24,10 @@
       "yubico-piv-tool"
     ];
     taps = [
-      "nikitabobko/tap"
+      {
+        name = "nikitabobko/tap";
+        trusted = true;
+      }
     ];
     casks = [
       "aerospace"
@@ -45,19 +36,12 @@
       "syncthing-app"
       "google-drive"
       "visual-studio-code"
-      "podman-desktop"
     ];
   };
 
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
   ];
-
-  # Use our custom packages
-  #nixpkgs.overlays = [outputs.overlays.additions outputs.overlays.modifications outputs.overlays.unstable];
-
-  # Set Git commit hash for darwin-version.
-  # system.configurationRevision = self.rev or self.dirtyRev or null;
 
   system.primaryUser = "pieter";
 

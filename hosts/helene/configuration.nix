@@ -84,14 +84,11 @@
     packages = with pkgs; [
       firefox
       kitty
-      rofi-wayland
+      rofi
       #  thunderbird
     ];
     shell = pkgs.zsh;
   };
-
-  # Allow unfree packages
-  # nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
