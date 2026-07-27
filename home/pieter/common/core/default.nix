@@ -54,7 +54,6 @@ in {
     # csvkit
     devbox
     dust
-    erlang
     fd
     file
     gcc

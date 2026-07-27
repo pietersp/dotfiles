@@ -31,6 +31,15 @@
     docker = "podman";
   };
 
+  # The tldr cache updater is a background service and must also work when
+  # Home Manager is activated without an active Aqua session (for example,
+  # over SSH).
+  launchd.agents.tldr-update.domain = "user";
+
+  # Home Manager's generated option docs currently embed a Nixpkgs source path
+  # without store context, which makes its options.json derivation unreliable.
+  manual.manpages.enable = false;
+
   # Set a target for home-manager to link to
   # home = {
   # username = "pieter";
