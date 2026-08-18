@@ -22,6 +22,7 @@
     brews = [
       "openssh"
       "yubico-piv-tool"
+      "kanata"
     ];
     taps = [
       {
@@ -36,6 +37,7 @@
       "syncthing-app"
       "google-drive"
       "visual-studio-code"
+      "karabiner-elements"
     ];
   };
 
