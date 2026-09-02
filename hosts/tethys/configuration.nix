@@ -37,7 +37,6 @@
       "syncthing-app"
       "google-drive"
       "visual-studio-code"
-      "karabiner-elements"
     ];
   };
 
