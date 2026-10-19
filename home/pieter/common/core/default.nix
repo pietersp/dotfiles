@@ -23,7 +23,7 @@ in {
   home = {
     username = username;
     homeDirectory =
-      if pkgs.stdenv.isDarwin
+      if pkgs.stdenv.hostPlatform.isDarwin
       then "/Users/${username}"
       else "/home/${username}";
   };
@@ -76,7 +76,7 @@ in {
   ];
 
   # This should source the nix.sh automatically
-  targets.genericLinux.enable = !pkgs.stdenv.isDarwin;
+  targets.genericLinux.enable = !pkgs.stdenv.hostPlatform.isDarwin;
 
   fonts.fontconfig.enable = true;
 
